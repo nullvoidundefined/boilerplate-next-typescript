@@ -1,10 +1,10 @@
 import utilStyles from "../../style/global.module.css";
 
-type ProposalPageProps = {
+type ItemPageProps = {
   title: string;
 };
 
-const ProposalDetailPage = ({ title }: ProposalPageProps) => {
+const ItemDetailPage = ({ title }: ItemPageProps) => {
   return (
     <article>
       <h1 className={utilStyles.headingXl}>{title}</h1>
@@ -12,4 +12,4 @@ const ProposalDetailPage = ({ title }: ProposalPageProps) => {
   );
 };
 
-export { ProposalDetailPage };
+export { ItemDetailPage };

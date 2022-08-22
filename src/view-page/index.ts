@@ -1,3 +1,3 @@
 export { HomePage } from "./home"
-export { ProposalDetailPage } from "./proposal/detail";
-export { ProposalListPage } from "./proposal/list";
+export { ItemDetailPage } from "./item/detail";
+export { ItemListPage } from "./item/list";

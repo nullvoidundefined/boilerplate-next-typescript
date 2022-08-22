@@ -6,7 +6,7 @@ type HomePageProps = {
 };
 
 const HomePage = ({ onButtonClick }: HomePageProps) => {
-  return <Button onClick={onButtonClick}>Navigate to Proposals Page</Button>;
+  return <Button onClick={onButtonClick}>Navigate to Items Page</Button>;
 };
 
 export { HomePage };

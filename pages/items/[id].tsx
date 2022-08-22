@@ -6,26 +6,26 @@ import {
 } from "next";
 
 import Head from "next/head";
+import { Item } from "../../src/type";
+import { ItemDetailPage } from "../../src/view-page";
 import { Layout } from "../../src/view-component/layout/layout";
 import { ParsedUrlQuery } from "querystring";
-import { Proposal } from "../../src/type";
-import { ProposalDetailPage } from "../../src/view-page";
-import { getAllProposalIds } from "../../src/service/proposal/getAllProposalIds/getAllProposalIds";
-import { getProposalData } from "../../src/service/proposal/getProposalData/getProposalData";
+import { getAllItemIds } from "../../src/service/item/getAllItemIds/getAllItemIds";
+import { getItemData } from "../../src/service/item/getItemData/getItemData";
 
-type ProposalRouteType = {
-  proposal: Proposal;
+type ItemRouteType = {
+  item: Item;
 };
 
-export default function ProposalDetailRoute({ proposal }: ProposalRouteType) {
-  const { title } = proposal;
+export default function ItemDetailRoute({ item }: ItemRouteType) {
+  const { title } = item;
 
   return (
     <Layout>
       <Head>
         <title>{title}</title>
       </Head>
-      <ProposalDetailPage title={title} />
+      <ItemDetailPage title={title} />
     </Layout>
   );
 }
@@ -33,7 +33,7 @@ export default function ProposalDetailRoute({ proposal }: ProposalRouteType) {
 // SSR
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllProposalIds();
+  const paths = getAllItemIds();
   return {
     paths,
     fallback: false,
@@ -43,13 +43,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext<ParsedUrlQuery>): Promise<
-  GetStaticPropsResult<ProposalRouteType>
+  GetStaticPropsResult<ItemRouteType>
 > => {
   const id = params?.id || ""; // There will always be an id due to routing
-  const proposal: Proposal = await getProposalData(id);
+  const item: Item = await getItemData(id);
   return {
     props: {
-      proposal,
+      item,
     },
   };
 };

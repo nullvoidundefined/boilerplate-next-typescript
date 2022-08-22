@@ -1,6 +1,6 @@
-type Proposal = {
+type Item = {
   id: string;
   title: string;
 };
 
-export type { Proposal };
+export type { Item };

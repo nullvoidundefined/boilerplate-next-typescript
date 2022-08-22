@@ -1,1 +1,1 @@
-export { proposals } from './proposals/proposals';
+export { items } from './items/items';

@@ -1,23 +1,23 @@
-import { Post, Proposal } from "../../src/type";
+import { Item, Post } from "../../src/type";
 
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import { ItemListPage } from "../../src/view-page";
 import { Layout } from "../../src/view-component";
-import { ProposalListPage } from "../../src/view-page";
-import { getAllProposals } from "../../src/service";
+import { getAllItems } from "../../src/service";
 import { siteTitle } from "../../src/constant";
 
 type HomeRouteProps = {
-  proposals: Proposal[];
+  items: Item[];
 };
 
-export default function HomeRoute({ proposals }: HomeRouteProps) {
+export default function HomeRoute({ items }: HomeRouteProps) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <ProposalListPage proposals={proposals} />
+      <ItemListPage items={items} />
     </Layout>
   );
 }
@@ -25,10 +25,10 @@ export default function HomeRoute({ proposals }: HomeRouteProps) {
 // SSR
 
 export const getStaticProps: GetStaticProps = async () => {
-  const proposals = getAllProposals();
+  const items = getAllItems();
   return {
     props: {
-      proposals,
+      items,
     },
   };
 };
