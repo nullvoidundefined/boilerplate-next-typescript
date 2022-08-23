@@ -1,4 +1,4 @@
-import { selectUser, setUser } from "../src/state/userSlice";
+import { selectUser, setUser } from "../src/state/slice/user";
 import { useDispatch, useSelector } from "react-redux";
 
 import Head from "next/head";

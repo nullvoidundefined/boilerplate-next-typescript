@@ -1,6 +1,6 @@
-import { AppState } from "./store";
+import { AppState } from "../store";
 import { HYDRATE } from "next-redux-wrapper";
-import { User } from "../type";
+import { User } from "../../type";
 import { createSlice } from "@reduxjs/toolkit";
 
 // Type for our state

@@ -4,7 +4,7 @@ import { Item } from "../../src/type";
 import { ItemListPage } from "../../src/view-page";
 import { Layout } from "../../src/view-component";
 import { getAllItems } from "../../src/service";
-import { selectUser } from "../../src/state/userSlice";
+import { selectUser } from "../../src/state/slice/user";
 import { siteTitle } from "../../src/constant";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
