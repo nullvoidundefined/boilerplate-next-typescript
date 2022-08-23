@@ -5,34 +5,32 @@ import {
   GetStaticPropsResult,
 } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
-import { getAllItemIds, getItemData } from "../../src/service";
+import { getItemData, getAllItemIds } from "../../src/service";
 import { selectUser } from "../../src/state";
 import { Item } from "../../src/type";
 import { LayoutAuth } from "../../src/view/component";
 import { ItemDetailPage } from "../../src/view/page";
-
 
 type ItemRouteType = {
   item: Item;
 };
 
 export default function ItemDetailRoute({ item }: ItemRouteType) {
-  const { title } = item;
-
   const router = useRouter();
   const user = useSelector(selectUser);
+
+  const { title } = item;
 
   useEffect(() => {
     if (!user) {
       router.push("/");
     }
   }, [router, user]);
-
 
   return (
     <LayoutAuth>

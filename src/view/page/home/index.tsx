@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
-import { User } from "../../type";
+
+import { User } from "../../../type";
 
 type HomePageProps = {
   onSignInSuccess: (user: User) => void;

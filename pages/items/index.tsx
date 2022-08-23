@@ -1,14 +1,15 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { Item } from "../../src/type";
-import { ItemListPage } from "../../src/view-page";
-import { LayoutAuth } from "../../src/view-component";
-import { getAllItems } from "../../src/service";
-import { selectUser } from "../../src/state/slice/user";
-import { siteTitle } from "../../src/constant";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+
+import { siteTitle } from "../../src/constant";
+import { getAllItems } from "../../src/service";
+import { selectUser } from "../../src/state";
+import { Item } from "../../src/type";
+import { LayoutAuth } from "../../src/view/component";
+import { ItemListPage } from "../../src/view/page";
 
 type ItemsRouteProps = {
   items: Item[];

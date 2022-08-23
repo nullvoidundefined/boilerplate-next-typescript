@@ -1,17 +1,17 @@
-import { selectUser, setUser } from "../src/state/slice/user";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Head from "next/head";
-import { HomePage } from "../src/view-page";
-import { LayoutNoAuth } from "../src/view-component";
-import { User } from "../src/type";
 import { siteTitle } from "../src/constant";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { selectUser, setUser } from "../src/state";
+import { User } from "../src/type";
+import { HomePage } from "../src/view/page";
+import { LayoutNoAuth } from "../src/view/component";
 
 export default function HomeRoute() {
-  const router = useRouter();
   const dispatch = useDispatch();
+  const router = useRouter();
   const user = useSelector(selectUser);
 
   const updateUser = (user: User) => {
