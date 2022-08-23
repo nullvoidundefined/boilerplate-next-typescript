@@ -10,11 +10,11 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
-type HomeRouteProps = {
+type ItemsRouteProps = {
   items: Item[];
 };
 
-export default function HomeRoute({ items }: HomeRouteProps) {
+export default function ItemsRoute({ items }: ItemsRouteProps) {
   const router = useRouter();
   const user = useSelector(selectUser);
 
