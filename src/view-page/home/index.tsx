@@ -1,19 +1,18 @@
-import Button from "../../view-design-system/button";
 import { FormEvent } from "react";
-import utilStyles from "../../style/global.module.css";
+import { User } from "../../type";
 
 type HomePageProps = {
-  onButtonClick: () => void;
+  onSignInSuccess: (userData:User) => void;
 };
 
-const HomePage = ({ onButtonClick }: HomePageProps) => {
+const HomePage = ({ onSignInSuccess }: HomePageProps) => {
   const onFormSubmit = (event: FormEvent) => {
     const form = event.target as HTMLFormElement;
     fetch(
       `/api/auth/signIn?password=${form.password.value}&userName=${form.userName.value}`
     )
       .then((response) => response.json())
-      .then((json) => console.log(json))
+      .then((userData) => onSignInSuccess(userData))
       .catch((error) => console.log(error));
     event.preventDefault();
   };

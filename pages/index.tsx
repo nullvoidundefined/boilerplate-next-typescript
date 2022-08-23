@@ -8,6 +8,10 @@ import { useRouter } from "next/router";
 export default function HomeRoute() {
   const router = useRouter();
 
+  const handleUserSignIn = () => {
+    navigateToItemsPage();
+  };
+
   const navigateToItemsPage = () => {
     router.push("items");
   };
@@ -17,7 +21,7 @@ export default function HomeRoute() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <HomePage onButtonClick={navigateToItemsPage} />
+      <HomePage onSignInSuccess={handleUserSignIn} />
     </Layout>
   );
 }
