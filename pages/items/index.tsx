@@ -1,7 +1,6 @@
-import { Item, Post } from "../../src/type";
-
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import { Item } from "../../src/type";
 import { ItemListPage } from "../../src/view-page";
 import { Layout } from "../../src/view-component";
 import { getAllItems } from "../../src/service";
