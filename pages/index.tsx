@@ -1,35 +1,36 @@
-import { APPLICATION_LOCAL_STORAGE_KEY, siteTitle } from "../src/constant";
-import {
-  selectAuthSessionToken,
-  setAuthSessionToken,
-} from "../src/state/authSlice";
+import { selectUser, setUser } from "../src/state/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Head from "next/head";
 import { HomePage } from "../src/view-page";
 import { Layout } from "../src/view-component";
+import { User } from "../src/type";
+import { siteTitle } from "../src/constant";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { writeLocalStorage } from "../src/service/localStorage/write";
 
 export default function HomeRoute() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const sessionToken = useSelector(selectAuthSessionToken);
+  const user = useSelector(selectUser);
 
-  const handleUserSignIn = (sessionToken: string) => {
-    dispatch(setAuthSessionToken(sessionToken));
-    writeLocalStorage("sessionToken", sessionToken);
-    console.log("sessionToken:", sessionToken);
-    router.push("items");
+  const updateUser = (user: User) => {
+    dispatch(setUser(user));
   };
+
+  useEffect(() => {
+    if (user) {
+      console.log("user:", user);
+      router.push("items");
+    }
+  }, [router, user]);
 
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <HomePage onSignInSuccess={handleUserSignIn} />
+      <HomePage onSignInSuccess={updateUser} />
     </Layout>
   );
 }
