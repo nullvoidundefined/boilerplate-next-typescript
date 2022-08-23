@@ -1,8 +1,7 @@
 import { FormEvent } from "react";
-import { User } from "../../type";
 
 type HomePageProps = {
-  onSignInSuccess: (userData:User) => void;
+  onSignInSuccess: (sessionToken: string) => void;
 };
 
 const HomePage = ({ onSignInSuccess }: HomePageProps) => {

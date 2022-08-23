@@ -1,16 +1,10 @@
 import "../src/style/global.css";
-import { useEffect } from "react";
 
 import type { AppProps } from "next/app";
+import { wrapper } from "../src/state/store";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  useEffect(() => {
-    fetch("/api/ping")
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(error));
-  }, []);
   return <Component {...pageProps} />;
 };
 
-export default App;
+export default wrapper.withRedux(App);

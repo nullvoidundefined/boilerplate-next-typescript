@@ -12,7 +12,8 @@ const signIn = (req: Request, res: Response) => {
   switch (method) {
     case "GET":
       if (password === "Bob") {
-        res.status(200).json("Sign In successful");
+        const sessionId = "ePpxd8sQwa0Sow5YRU8QFp4oMiqGbw4l"
+        res.status(200).json(sessionId);
       } else {
         res.status(401).json("User unauthorized");
       }
