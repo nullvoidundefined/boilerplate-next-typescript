@@ -1,2 +1,3 @@
 export { Date } from './date/date';
-export { Layout } from './layout/layout';
+export { LayoutAuth } from './layout/auth/layoutAuth';
+export { LayoutNoAuth } from './layout/noAuth/layoutNoAuth';

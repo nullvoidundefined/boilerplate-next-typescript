@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Head from "next/head";
 import { HomePage } from "../src/view-page";
-import { Layout } from "../src/view-component";
+import { LayoutNoAuth } from "../src/view-component";
 import { User } from "../src/type";
 import { siteTitle } from "../src/constant";
 import { useEffect } from "react";
@@ -26,11 +26,11 @@ export default function HomeRoute() {
   }, [router, user]);
 
   return (
-    <Layout home>
+    <LayoutNoAuth>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <HomePage onSignInSuccess={updateUser} />
-    </Layout>
+    </LayoutNoAuth>
   );
 }

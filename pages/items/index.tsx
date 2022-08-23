@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { Item } from "../../src/type";
 import { ItemListPage } from "../../src/view-page";
-import { Layout } from "../../src/view-component";
+import { LayoutAuth } from "../../src/view-component";
 import { getAllItems } from "../../src/service";
 import { selectUser } from "../../src/state/slice/user";
 import { siteTitle } from "../../src/constant";
@@ -25,12 +25,12 @@ export default function ItemsRoute({ items }: ItemsRouteProps) {
   }, [router, user]);
 
   return (
-    <Layout home>
+    <LayoutAuth>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <ItemListPage items={items} />
-    </Layout>
+    </LayoutAuth>
   );
 }
 
