@@ -1,6 +1,6 @@
-import { ApplicationLocalStorage } from "../../type";
+import { LocalStorage } from "../../type";
 
-const readLocalStorage = (key: keyof ApplicationLocalStorage) => {
+const readLocalStorage = (key: keyof LocalStorage) => {
     return window.localStorage[key];
 };
 

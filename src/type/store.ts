@@ -1,5 +1,5 @@
-type ApplicationLocalStorage = {
+type LocalStorage = {
     sessionToken: string;
 }
 
-export type { ApplicationLocalStorage }
+export type { LocalStorage }

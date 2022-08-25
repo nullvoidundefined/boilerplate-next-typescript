@@ -1,0 +1,5 @@
+export const APPLICATION_BREAKPOINT = {
+  SMALL: 480,
+  MEDIUM: 996,
+  LARGE: 1280,
+};
