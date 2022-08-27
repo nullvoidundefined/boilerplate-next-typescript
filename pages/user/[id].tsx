@@ -5,15 +5,9 @@ import { useSelector } from "react-redux";
 
 import { selectUser } from "../../src/state";
 import { Item } from "../../src/type";
-import { LayoutAuth } from "../../src/view/component";
+import { Layout } from "../../src/view/component";
 
-type ItemRouteType = {
-  item: Item;
-};
-
-export default function ItemDetailRoute({ item }: ItemRouteType) {
-
-  const { title } = item;
+export default function ItemDetailRoute() {
 
   // Creat Auth redirect component
 
@@ -27,11 +21,11 @@ export default function ItemDetailRoute({ item }: ItemRouteType) {
   }, [router, user]);
 
   return (
-    <LayoutAuth>
+    <Layout>
       <Head>
-        <title>{title}</title>
+        <title>User Profile</title>
       </Head>
       User Page
-    </LayoutAuth>
+    </Layout>
   );
 }

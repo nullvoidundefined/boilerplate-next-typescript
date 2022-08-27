@@ -7,7 +7,7 @@ import { siteTitle } from "../src/constant";
 import { selectUser, setUser } from "../src/state";
 import { User } from "../src/type";
 import { HomePage } from "../src/view/page";
-import { LayoutNoAuth } from "../src/view/component";
+import { Layout } from "../src/view/component";
 
 export default function HomeRoute() {
   const dispatch = useDispatch();
@@ -26,11 +26,11 @@ export default function HomeRoute() {
   }, [router, user]);
 
   return (
-    <LayoutNoAuth>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <HomePage onSignInSuccess={updateUser} />
-    </LayoutNoAuth>
+    </Layout>
   );
 }

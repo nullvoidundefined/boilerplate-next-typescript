@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { getAllItemIds, getItemData } from "../../src/service";
 import { selectUser } from "../../src/state";
 import { Item } from "../../src/type";
-import { LayoutAuth } from "../../src/view/component";
+import { Layout } from "../../src/view/component";
 import { ItemDetailPage } from "../../src/view/page";
 
 
@@ -35,12 +35,12 @@ export default function ItemDetailRoute({ item }: ItemRouteType) {
 
 
   return (
-    <LayoutAuth>
+    <Layout>
       <Head>
         <title>{title}</title>
       </Head>
       <ItemDetailPage title={title} />
-    </LayoutAuth>
+    </Layout>
   );
 }
 

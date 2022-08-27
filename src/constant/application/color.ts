@@ -1,0 +1,8 @@
+export const APPLICATION_COLOR = {
+    CONTENT_BACKGROUND: "yellow",
+    FOOTER_BACKGROUND: "blue",
+    HEADER_BACKGROUND: "red",
+    NAVIGATION_DROPDOWN_BACKGROUND: "purple",
+    SIDEBAR_BACKGROUND: "green",
+  };
+  
