@@ -6,9 +6,9 @@ import type { AppProps } from "next/app";
 
 import { useLagRadar, wrapper } from "../src/state";
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component: Route, pageProps }: AppProps) => {
   useLagRadar();
-  return <Component {...pageProps} />;
+  return <Route {...pageProps} />;
 };
 
 export default wrapper.withRedux(App);

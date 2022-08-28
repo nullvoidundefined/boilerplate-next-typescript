@@ -2,13 +2,15 @@ import { useEffect } from "react";
 import { useWindowSize } from "react-use";
 
 const useLagRadar = () => {
+  // This should'nt be a hook. Convert it to a RFC so that it can be conditionally rendered in development only.
+  // It also shouldnt be JS. Convert to TS as soon as possible.
   useEffect(() => {
     return lagRadar();
   }, []);
 };
 
 const lagRadar = () => {
-  const frames = 30; 
+  const frames = 30;
   const inset = 3; // circle inset px
   const parent = document.body;
   const size = 100; // outer frame px
