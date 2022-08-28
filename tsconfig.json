@@ -16,5 +16,5 @@
     "target": "es5"
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/state/slice/user.js"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/state/slice/user.js", "src/state/hook/useLagRadar.js"]
 }

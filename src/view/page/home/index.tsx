@@ -18,6 +18,9 @@ const HomePage = ({ onSignInSuccess }: HomePageProps) => {
     event.preventDefault();
   };
 
+  console.log("HomePage is rendering")
+
+
   return (
     <form onSubmit={onFormSubmit}>
       <div className="container">

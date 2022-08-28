@@ -37,11 +37,13 @@ const Layout = ({ children }: LayoutProps) => {
     }
   }, [router, user]);
 
+  console.log("isRendering")
+
   return (
     <>
       <Header
         isAuth={Boolean(user)}
-        isMobile={isMobile}
+        isMobile={isMobile ? true : false}
         isNavigationDropdownOpen={isNavigationDropdownOpen}
         onDropDownToggleButtonClick={toggleDropdown}
       />
