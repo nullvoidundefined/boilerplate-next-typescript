@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  useCombinedHeaderAndFooterHeightOffset,
+  useHeaderAndFooterHeightOffset,
   useHeaderHeightOffset,
 } from "../../../../state";
 import { selectUser, useWindowBreakpoint } from "../../../../state";
@@ -19,10 +19,9 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   const [isNavigationDropdownOpen, setIsNavigationDropdownOpen] =
     useState(false);
-  const router = useRouter();
   const user = useSelector(selectUser);
 
-  const mainContentHeightOffset = useCombinedHeaderAndFooterHeightOffset();
+  const mainContentHeightOffset = useHeaderAndFooterHeightOffset();
   const navigationDropdownHeightOffset = useHeaderHeightOffset();
 
   const { isMobile } = useWindowBreakpoint();
@@ -30,14 +29,6 @@ const Layout = ({ children }: LayoutProps) => {
   const toggleDropdown = () => {
     setIsNavigationDropdownOpen(!isNavigationDropdownOpen);
   };
-
-  useEffect(() => {
-    if (!user) {
-      router.push("/");
-    }
-  }, [router, user]);
-
-  console.log("isRendering")
 
   return (
     <>

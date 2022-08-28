@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { APPLICATION_DIMENSION } from "../../constant";
 import { useWindowBreakpoint } from "./useWindowBreakpoint";
 
-const useCombinedHeaderAndFooterHeightOffset = () => {
-  const [
-    combinedHeaderAndFooterHeightOffset,
-    setCombinedHeaderAndFooterHeightOffset,
-  ] = useState(0);
+const useHeaderAndFooterHeightOffset = () => {
+  const [headerAndFooterHeightOffset, setHeaderAndFooterHeightOffset] =
+    useState(0);
   const { isMobile } = useWindowBreakpoint();
 
   useEffect(() => {
@@ -16,10 +14,10 @@ const useCombinedHeaderAndFooterHeightOffset = () => {
       : APPLICATION_DIMENSION.HEADER_HEIGHT_DESKTOP +
         APPLICATION_DIMENSION.FOOTER_HEIGHT;
 
-    setCombinedHeaderAndFooterHeightOffset(offset);
+    setHeaderAndFooterHeightOffset(offset);
   }, [isMobile]);
 
-  return combinedHeaderAndFooterHeightOffset;
+  return headerAndFooterHeightOffset;
 };
 
-export { useCombinedHeaderAndFooterHeightOffset };
+export { useHeaderAndFooterHeightOffset };

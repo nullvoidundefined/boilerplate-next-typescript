@@ -2,21 +2,14 @@ import type {
   NextApiRequest as Request,
   NextApiResponse as Response,
 } from "next";
+import { signIn } from "../../../src/service";
 
-const signIn = (req: Request, res: Response) => {
-  const {
-    query: { password },
-    method,
-  } = req;
+const signInRoute = async (req: Request, res: Response) => {
+  const { method } = req;
 
   switch (method) {
     case "GET":
-      if (password === "Bob") {
-        const user = { id: "9999999999", name: "Bob" };
-        res.status(200).json(user);
-      } else {
-        res.status(401).json("User unauthorized");
-      }
+      await signIn(req, res);
       break;
     default:
       res.setHeader("Allow", ["GET"]);
@@ -24,4 +17,4 @@ const signIn = (req: Request, res: Response) => {
   }
 };
 
-export default signIn;
+export default signInRoute;

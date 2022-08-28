@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { useWindowSize } from "react-use";
 
-import { useWindowSize } from "./useWindowSize";
 import { APPLICATION_BREAKPOINT } from "../../constant";
 import { ApplicationBreakpoint } from "../../type";
 

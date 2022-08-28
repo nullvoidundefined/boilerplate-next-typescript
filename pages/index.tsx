@@ -18,7 +18,11 @@ export default function HomeRoute() {
     dispatch(setUser(user));
   };
 
-  console.log("HomeRoute is rendering")
+  useEffect(() => {
+    if (user) {
+      router.push("/items");
+    }
+  }, [router, user]);
 
   return (
     <Layout>

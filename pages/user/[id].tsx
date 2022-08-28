@@ -8,9 +8,6 @@ import { Item } from "../../src/type";
 import { Layout } from "../../src/view/component";
 
 export default function ItemDetailRoute() {
-
-  // Creat Auth redirect component
-
   const router = useRouter();
   const user = useSelector(selectUser);
 

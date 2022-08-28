@@ -18,9 +18,6 @@ const HomePage = ({ onSignInSuccess }: HomePageProps) => {
     event.preventDefault();
   };
 
-  console.log("HomePage is rendering")
-
-
   return (
     <form onSubmit={onFormSubmit}>
       <div className="container">
@@ -29,7 +26,7 @@ const HomePage = ({ onSignInSuccess }: HomePageProps) => {
             <b>Username</b>
           </label>
           <input
-            defaultValue="Bob" // Remove
+            defaultValue="iangreenough" // Remove
             name="userName"
             placeholder="Enter Username"
             required
@@ -41,7 +38,7 @@ const HomePage = ({ onSignInSuccess }: HomePageProps) => {
             <b>Password</b>
           </label>
           <input
-            defaultValue="Bob" // Remove
+            defaultValue="password" // Remove
             name="password"
             placeholder="Enter Password"
             required

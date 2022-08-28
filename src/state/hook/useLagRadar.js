@@ -5,7 +5,6 @@ const useLagRadar = () => {
   const { height, width } = useWindowSize();
 
   useEffect(() => {
-    console.log("rendering lag radar");
     return lagRadar({
       frames: 60, // number of frames to draw, more = worse performance
       speed: 0.0017, // how fast the sweep moves (rads per ms)
@@ -24,16 +23,19 @@ const useLagRadar = () => {
 const lagRadar = (config = {}) => {
   const {
     frames = 50, // number of frames to draw, more = worse performance
-    speed = 0.0017, // how fast the sweep moves (rads per ms)
-    size = 300, // outer frame px
     inset = 3, // circle inset px
     parent = document.body, // DOM node to attach to
+    size = 300, // outer frame px
+    speed = 0.0017, // how fast the sweep moves (rads per ms)
   } = config;
 
   const svgns = "http://www.w3.org/2000/svg";
 
   const styles = document.createTextNode(`
     .lagRadar {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       pointer-events: none;
     }
     .lagRadar-sweep > * {
@@ -59,12 +61,12 @@ const lagRadar = (config = {}) => {
   const middle = size / 2;
   const radius = middle - inset;
 
-  const $hand = $svg("path", { class: "lagRadar-hand" });
-  const $arcs = new Array(frames).fill("path").map((t) => $svg(t));
-  const $root = $svg("svg", { class: "lagRadar", height: size, width: size }, [
+  const hand = $svg("path", { class: "lagRadar-hand" });
+  const arcs = new Array(frames).fill("path").map((t) => $svg(t));
+  const root = $svg("svg", { class: "lagRadar", height: size, width: size }, [
     $svg("style", { type: "text/css" }, [styles]),
-    $svg("g", { class: "lagRadar-sweep" }, $arcs),
-    $hand,
+    $svg("g", { class: "lagRadar-sweep" }, arcs),
+    hand,
     $svg("circle", {
       class: "lagRadar-face",
       cx: middle,
@@ -73,7 +75,7 @@ const lagRadar = (config = {}) => {
     }),
   ]);
 
-  parent.appendChild($root);
+  parent.appendChild(root);
 
   let frame;
   let framePtr = 0;
@@ -107,13 +109,13 @@ const lagRadar = (config = {}) => {
     const path = `M${tx} ${ty}A${radius} ${radius} 0 ${bigArc} 0 ${last.tx} ${last.ty}L${middle} ${middle}`;
     const hue = calcHue(rdelta / speed);
 
-    $arcs[framePtr % frames].setAttribute("d", path);
-    $arcs[framePtr % frames].setAttribute("fill", `hsl(${hue}, 80%, 40%)`);
-    $hand.setAttribute("d", `M${middle} ${middle}L${tx} ${ty}`);
-    $hand.setAttribute("stroke", `hsl(${hue}, 80%, 60%)`);
+    arcs[framePtr % frames].setAttribute("d", path);
+    arcs[framePtr % frames].setAttribute("fill", `hsl(${hue}, 80%, 40%)`);
+    hand.setAttribute("d", `M${middle} ${middle}L${tx} ${ty}`);
+    hand.setAttribute("stroke", `hsl(${hue}, 80%, 60%)`);
 
     for (let i = 0; i < frames; i++) {
-      $arcs[(frames + framePtr - i) % frames].style.fillOpacity =
+      arcs[(frames + framePtr - i) % frames].style.fillOpacity =
         1 - i / frames;
     }
 
@@ -134,7 +136,7 @@ const lagRadar = (config = {}) => {
     if (frame) {
       window.cancelAnimationFrame(frame);
     }
-    $root.remove();
+    root.remove();
   };
 };
 
