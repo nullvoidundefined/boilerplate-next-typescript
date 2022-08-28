@@ -2,33 +2,17 @@ import { useEffect } from "react";
 import { useWindowSize } from "react-use";
 
 const useLagRadar = () => {
-  const { height, width } = useWindowSize();
-
   useEffect(() => {
-    return lagRadar({
-      frames: 60, // number of frames to draw, more = worse performance
-      speed: 0.0017, // how fast the sweep moves (rads per ms)
-      size: Math.min(width, height) / 3, // outer frame px
-      inset: 3, // circle inset px
-      parent: document.body, // DOM node to attach to
-    });
-  }, [height, width]);
+    return lagRadar();
+  }, []);
 };
 
-/**
- * lagRadar
- * Licence: ISC copyright: @mobz 2018
- */
-
-const lagRadar = (config = {}) => {
-  const {
-    frames = 50, // number of frames to draw, more = worse performance
-    inset = 3, // circle inset px
-    parent = document.body, // DOM node to attach to
-    size = 300, // outer frame px
-    speed = 0.0017, // how fast the sweep moves (rads per ms)
-  } = config;
-
+const lagRadar = () => {
+  const frames = 30; 
+  const inset = 3; // circle inset px
+  const parent = document.body;
+  const size = 100; // outer frame px
+  const speed = 0.0017; // how fast the sweep moves (rads per ms)
   const svgns = "http://www.w3.org/2000/svg";
 
   const styles = document.createTextNode(`
@@ -115,8 +99,7 @@ const lagRadar = (config = {}) => {
     hand.setAttribute("stroke", `hsl(${hue}, 80%, 60%)`);
 
     for (let i = 0; i < frames; i++) {
-      arcs[(frames + framePtr - i) % frames].style.fillOpacity =
-        1 - i / frames;
+      arcs[(frames + framePtr - i) % frames].style.fillOpacity = 1 - i / frames;
     }
 
     framePtr++;
