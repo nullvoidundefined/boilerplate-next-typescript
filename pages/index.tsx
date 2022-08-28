@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { siteTitle } from "../src/constant";
@@ -8,6 +8,7 @@ import { selectUser, setUser } from "../src/state";
 import { User } from "../src/type";
 import { HomePage } from "../src/view/page";
 import { Layout } from "../src/view/component";
+import { ModalContext } from "../src/state/context/modalContext";
 
 export default function HomeRoute() {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ export default function HomeRoute() {
   const updateUser = (user: User) => {
     dispatch(setUser(user));
   };
+
+  const modalContext = useContext(ModalContext);
 
   useEffect(() => {
     if (user) {
@@ -29,6 +32,8 @@ export default function HomeRoute() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      <button onClick={() => modalContext.showModal()}>Show Modal</button>
+      <button onClick={() => modalContext.hideModal()}>Hide Modal</button>
       <HomePage onSignInSuccess={updateUser} />
     </Layout>
   );
