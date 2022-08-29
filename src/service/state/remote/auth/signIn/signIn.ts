@@ -20,7 +20,7 @@ const authSignIn = async (req: Request, res: Response) => {
 
     if (result.rows.length) {
       const user = result.rows[0];
-      console.log(`----- authSignIn :: success = ${user}`);
+      console.log(`----- authSignIn :: success = ${JSON.stringify(user)}`);
       res.status(200).json(user);
     } else {
       console.log(`----- authSignIn :: error = no user found`);
