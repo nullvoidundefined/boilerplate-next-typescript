@@ -8,7 +8,9 @@ import { selectUser, setUser } from "../src/state";
 import { User } from "../src/type";
 import { HomePage } from "../src/view/page";
 import { Layout } from "../src/view/component";
-import { ModalContext } from "../src/state/context/modalContext";
+import { ModalManagerContext } from "../src/state/context/modalManagerContext";
+import { ExampleModal } from "../src/view/component/modal/example/exampleModal";
+import { Button } from "../src/view/design-system";
 
 export default function HomeRoute() {
   const dispatch = useDispatch();
@@ -19,7 +21,8 @@ export default function HomeRoute() {
     dispatch(setUser(user));
   };
 
-  const modalContext = useContext(ModalContext);
+  const modalManagerContext = useContext(ModalManagerContext);
+  const { hideModal, showModal } = modalManagerContext;
 
   useEffect(() => {
     if (user) {
@@ -32,8 +35,9 @@ export default function HomeRoute() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <button onClick={() => modalContext.showModal()}>Show Modal</button>
-      <button onClick={() => modalContext.hideModal()}>Hide Modal</button>
+      <Button onClick={() => showModal(<ExampleModal onHide={hideModal} />)}>
+        Show Modal
+      </Button>
       <HomePage onSignInSuccess={updateUser} />
     </Layout>
   );

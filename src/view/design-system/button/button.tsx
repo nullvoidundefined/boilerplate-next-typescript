@@ -1,17 +1,12 @@
 import { ReactNode } from "react";
-import styled from "styled-components";
-
-export interface ButtonProps {
+import { Button as BSButton } from "react-bootstrap";
+interface ButtonProps {
   children: ReactNode;
   onClick: () => void;
 }
 
-const StyledButton = styled.button`
-  color: blue;
-`;
+const Button = ({ children, onClick }: ButtonProps) => {
+  return <BSButton onClick={onClick}>{children}</BSButton>;
+};
 
-export function Button({ children, onClick }: ButtonProps) {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
-}
-
-export default Button;
+export { Button };

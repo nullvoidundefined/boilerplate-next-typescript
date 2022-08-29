@@ -1,21 +1,36 @@
-import { forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  ReactNode,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+  useMemo,
+} from "react";
+import { Modal } from "react-bootstrap";
 
-const Modal = forwardRef((_props, ref) => {
-  const [modal, setModal] = useState("");
+const ModalManager = forwardRef((_props, ref) => {
+  const [modalContent, setModalContent] = useState<ReactNode | null>(null);
+
+  const doShow = useMemo(() => {
+    return modalContent !== null;
+  }, [modalContent]);
 
   useImperativeHandle(ref, () => ({
-    showModal() {
-      setModal("Show Modal");
+    showModal(modalContent: ReactNode) {
+      setModalContent(modalContent);
     },
 
     hideModal() {
-      setModal("");
+      setModalContent(null);
     },
   }));
 
-  return <h1>{modal}</h1>;
+  return (
+    <Modal show={doShow} onHide={() => setModalContent(null)}>
+      {modalContent}
+    </Modal>
+  );
 });
 
-Modal.displayName = "Modal";
+ModalManager.displayName = "ModalProvider";
 
-export { Modal };
+export { ModalManager };
