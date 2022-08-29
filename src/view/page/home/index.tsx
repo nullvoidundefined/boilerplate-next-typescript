@@ -1,53 +1,25 @@
 import { FormEvent } from "react";
 
-import { User } from "../../../type";
+import { AuthRequestData, User } from "../../../type";
+import { SignInForm } from "../../component";
 
 type HomePageProps = {
   onSignInSuccess: (user: User) => void;
 };
 
 const HomePage = ({ onSignInSuccess }: HomePageProps) => {
-  const onFormSubmit = (event: FormEvent) => {
-    const form = event.target as HTMLFormElement;
-    fetch(
-      `/api/auth/signIn?password=${form.password.value}&userName=${form.userName.value}`
-    )
+  const onFormSubmit = (signUpData: AuthRequestData) => {
+    const { password, email } = signUpData;
+    fetch(`/api/auth/signIn?password=${password}&userName=${email}`)
       .then((response) => response.json())
       .then((userData) => onSignInSuccess(userData))
       .catch((error) => console.log(error));
-    event.preventDefault();
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <div className="container">
-        <div>
-          <label htmlFor="userName">
-            <b>Username</b>
-          </label>
-          <input
-            defaultValue="iangreenough" // Remove
-            name="userName"
-            placeholder="Enter Username"
-            required
-            type="text"
-          />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <b>Password</b>
-          </label>
-          <input
-            defaultValue="password" // Remove
-            name="password"
-            placeholder="Enter Password"
-            required
-            type="password"
-          />
-        </div>
-        <button type="submit">Login</button>
-      </div>
-    </form>
+    <>
+      <SignInForm onSubmit={onFormSubmit} />
+    </>
   );
 };
 

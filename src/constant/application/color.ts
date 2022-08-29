@@ -4,5 +4,6 @@ export const APPLICATION_COLOR = {
     HEADER_BACKGROUND: "red",
     NAVIGATION_DROPDOWN_BACKGROUND: "purple",
     SIDEBAR_BACKGROUND: "green",
+    TEXT_COLOR_DARKEST: "black",
   };
   

@@ -5,7 +5,7 @@ import type {
   NextApiResponse as Response,
 } from "next";
 
-const signIn = async (req: Request, res: Response) => {
+const authSignIn = async (req: Request, res: Response) => {
   const {
     query: { userName, password },
   } = req;
@@ -29,4 +29,4 @@ const signIn = async (req: Request, res: Response) => {
   }
 };
 
-export { signIn };
+export { authSignIn };

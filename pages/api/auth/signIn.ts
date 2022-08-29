@@ -2,14 +2,14 @@ import type {
   NextApiRequest as Request,
   NextApiResponse as Response,
 } from "next";
-import { signIn } from "../../../src/service";
+import { authSignIn } from "../../../src/service";
 
 const signInRoute = async (req: Request, res: Response) => {
   const { method } = req;
 
   switch (method) {
     case "GET":
-      await signIn(req, res);
+      await authSignIn(req, res);
       break;
     default:
       res.setHeader("Allow", ["GET"]);
