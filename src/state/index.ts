@@ -1,3 +1,4 @@
+export { ModalManagerContext } from "./context/modalManagerContext";
 export { useHeaderAndFooterHeightOffset } from "./hook/useHeaderAndFooterHeightOffset";
 export { useHeaderHeightOffset } from "./hook/useHeaderHeightOffset";
 export { useLagRadar } from "./hook/useLagRadar";

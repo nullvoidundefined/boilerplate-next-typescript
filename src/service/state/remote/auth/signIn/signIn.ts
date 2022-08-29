@@ -18,10 +18,12 @@ const authSignIn = async (req: Request, res: Response) => {
     const result = await client.query(signInQuery);
     await client.clean();
 
-    if (result.rowCount) {
+    if (result.rows.length) {
       const user = result.rows[0];
+      console.log(`----- authSignIn :: success = ${user}`);
       res.status(200).json(user);
     } else {
+      console.log(`----- authSignIn :: error = no user found`);
       res.status(401).json("User unauthorized");
     }
   } catch (error) {

@@ -31,14 +31,11 @@ export default function HomeRoute() {
   }, [router, user]);
 
   return (
-    <Layout>
+    <Layout onSignInSuccess={updateUser}>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Button onClick={() => showModal(<ExampleModal onHide={hideModal} />)}>
-        Show Modal
-      </Button>
-      <HomePage onSignInSuccess={updateUser} />
+      <HomePage />
     </Layout>
   );
 }
