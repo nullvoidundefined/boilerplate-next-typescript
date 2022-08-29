@@ -29,7 +29,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
     <>
       <ModalManager ref={modalRef} />
       <ModalManagerContext.Provider value={{ hideModal, showModal }}>
-        <Route {...pageProps} />;
+        <Route {...pageProps} />
       </ModalManagerContext.Provider>
     </>
   );
