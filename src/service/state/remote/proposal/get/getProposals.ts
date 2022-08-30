@@ -4,10 +4,6 @@ import type {
 } from "next";
 
 const getProposals = async (req: Request, res: Response) => {
-  const {
-    query: { email, password, userName },
-  } = req;
-
   try {
     res.status(200);
   } catch (error) {

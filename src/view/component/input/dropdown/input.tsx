@@ -2,7 +2,7 @@ import { Dropdown } from "react-bootstrap";
 
 export type DropdownItem = {
     itemText: string;
-    onClick: (...args: any[]) => void;
+    onClick: (...args: any[]) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 type DropdownProps = {

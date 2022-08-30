@@ -3,14 +3,15 @@ import "./table.module.css";
 import * as React from "react";
 
 import {
+  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
 interface TableProps {
-  data: any[];
-  columns: any;
+  data: unknown[];
+  columns: ColumnDef<any, any>[]; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 const VibeTable = ({ columns, data }: TableProps) => {

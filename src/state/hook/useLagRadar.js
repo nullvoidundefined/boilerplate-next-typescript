@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useWindowSize } from "react-use";
 
 const useLagRadar = () => {
   // This should'nt be a hook. Convert it to a RFC so that it can be conditionally rendered in development only.

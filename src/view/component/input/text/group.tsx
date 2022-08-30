@@ -6,7 +6,7 @@ import { ChangeEvent } from "react";
 type TextInputGroupProps = {
     formDataKey: string;
     label: string;
-    onChange: (formDataKey: any, value: string) => void;
+    onChange: (formDataKey: string, value: string) => void;
     value: string | undefined;
     
     error?: string;

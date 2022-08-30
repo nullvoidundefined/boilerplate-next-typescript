@@ -19,6 +19,7 @@ import { ModalManagerContext } from "../src/state/context/modalManagerContext";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthRequestData, User } from "../src/type";
 import { SignInModal } from "../src/view/component/modal/signIn/signIn";
+import { noop } from "lodash";
 
 const App = ({ Component: Route, pageProps }: AppProps) => {
   const user = useSelector(selectUser);
@@ -31,8 +32,8 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
   useLagRadar();
 
   const modalRef = useRef({
-    hideModal: () => {},
-    showModal: (_modalContent: ReactNode) => {},
+    hideModal: () => noop(),
+    showModal: (modalContent: ReactNode) => modalContent,
   });
 
   const hideModal = () => {
@@ -48,9 +49,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
   };
 
   const showSignInModal = () =>
-    showModal(
-      <SignInModal onHide={hideModal} onFormSubmit={onSignInFormSubmit} />
-    );
+    showModal(<SignInModal onFormSubmit={onSignInFormSubmit} />);
 
   const showModal = (modalContent: ReactNode) => {
     modalRef.current.showModal(modalContent);
@@ -69,7 +68,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
           navigationDropdownHeightOffset={navigationDropdownHeightOffset}
           isMobile={isMobile}
           onLogInButtonClick={showSignInModal}
-          onLogOutButtonClick={() => {}}
+          onLogOutButtonClick={() => noop}
           user={user}
         >
           <Route {...pageProps} />

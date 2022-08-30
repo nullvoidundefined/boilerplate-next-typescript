@@ -9,7 +9,7 @@ import {
 } from "../../../src/service";
 
 const proposalRoute = async (req: Request, res: Response) => {
-  const { method, query } = req;
+  const { method } = req;
 
   switch (method) {
     case "GET":

@@ -6,7 +6,7 @@ import styled from "styled-components";
 type NumberInputGroupProps = {
     formDataKey: string;
     label: string;
-    onChange: (formDataKey: any, value: number) => void;
+    onChange: (formDataKey: string, value: number) => void;
     value: number | undefined;
 
     allowNegativeNumbers?: boolean;
@@ -32,7 +32,6 @@ const NumberInputGroup = ({
     placeholder,
     sublabel,
     step = "1",
-    tooltipText,
     value,
 }: NumberInputGroupProps) => {
     return (

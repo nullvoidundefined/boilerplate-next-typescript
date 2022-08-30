@@ -7,7 +7,7 @@ type PhoneInputGroupProps = {
     error: string | undefined;
     formDataKey: string;
     label: string;
-    onChange: (formDataKey: any, value: string) => void;
+    onChange: (formDataKey: string, value: string) => void;
     value: string | undefined;
 
     placeholder?: string;

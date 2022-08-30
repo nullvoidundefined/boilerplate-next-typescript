@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { selectUser } from "../../src/state";
-import { Item } from "../../src/type";
-import { Layout } from "../../src/view/component";
 
 export default function ItemDetailRoute() {
   const router = useRouter();

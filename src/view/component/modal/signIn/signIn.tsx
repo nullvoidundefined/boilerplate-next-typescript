@@ -1,14 +1,12 @@
 import { Modal } from "react-bootstrap";
 import { AuthRequestData } from "../../../../type";
-import { Button } from "../../../design-system";
 import { SignInForm } from "../../form/signIn/signInForm";
 
 interface ExampleModalProps {
-  onHide: () => void;
   onFormSubmit: (formData:AuthRequestData) => void;
 }
 
-const SignInModal = ({ onHide, onFormSubmit }: ExampleModalProps) => {
+const SignInModal = ({ onFormSubmit }: ExampleModalProps) => {
   return (
     <>
       <Modal.Header closeButton>

@@ -1,18 +1,7 @@
-import { ReactNode, useContext, useState } from "react";
+import { ReactNode, useState } from "react";
 import { Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  useHeaderAndFooterHeightOffset,
-  useHeaderHeightOffset,
-} from "../../../../state";
-import {
-  selectUser,
-  useWindowBreakpoint,
-  ModalManagerContext,
-} from "../../../../state";
-import { AuthRequestData, User } from "../../../../type";
-import { SignInModal } from "../../modal/signIn/signIn";
+import { User } from "../../../../type";
 import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
 import { NavigationDropdown } from "../navigation/dropdown/dropdown";
@@ -71,9 +60,7 @@ const Layout = ({
             isOpen={isNavigationDropdownOpen}
             onLinkClick={toggleDropdown}
           />
-          <Content heightOffset={contentHeightOffset}>
-            {children}
-          </Content>
+          <Content heightOffset={contentHeightOffset}>{children}</Content>
         </div>
       ) : (
         <div className="d-flex">

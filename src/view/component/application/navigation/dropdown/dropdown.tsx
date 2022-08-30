@@ -12,7 +12,6 @@ interface NavigationDropdownProps {
 const NavigationDropdown = ({
   isOpen,
   heightOffset,
-  onLinkClick,
 }: NavigationDropdownProps) => {
   return isOpen ? (
     <NavigationDropdownContainer>

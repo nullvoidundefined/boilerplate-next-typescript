@@ -1,4 +1,4 @@
-import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap"; // TODO [ENG-1128] replace with AWD TextButton
 
 import { validateSignInForm } from "../../../../service/validate/form/signIn/validateSignInForm"; // TODO Why does this break Next if using parent export?
@@ -19,7 +19,7 @@ const SignInForm = ({ onSubmit }: MobileAppFormProps) => {
   });
   const [hasErrored, setHasErrored] = useState(false);
 
-  const updateFormState = (key: string, value: string | any[] | boolean) => {
+  const updateFormState = (key: string, value: string | unknown[] | boolean) => {
     setFormState({ ...formState, [key]: value });
   };
 

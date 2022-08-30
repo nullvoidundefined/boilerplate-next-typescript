@@ -8,7 +8,7 @@ type TextInputGroupProps = {
     checked: boolean | undefined;
     formDataKey: string;
     label: string;
-    onChange: (formDataKey: any, value: boolean) => void;
+    onChange: (formDataKey: string, value: boolean) => void;
 
     error?: string;
     sublabel?: string;
@@ -22,7 +22,6 @@ const CheckboxInputGroup = ({
     label,
     onChange,
     sublabel,
-    tooltipText,
 }: TextInputGroupProps) => {
     return (
         <div className="align-items-center d-flex mb-3">
