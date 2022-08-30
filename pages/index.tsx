@@ -13,16 +13,8 @@ import { ExampleModal } from "../src/view/component/modal/example/exampleModal";
 import { Button } from "../src/view/design-system";
 
 export default function HomeRoute() {
-  const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector(selectUser);
-
-  const updateUser = (user: User) => {
-    dispatch(setUser(user));
-  };
-
-  const modalManagerContext = useContext(ModalManagerContext);
-  const { hideModal, showModal } = modalManagerContext;
 
   useEffect(() => {
     if (user) {
@@ -31,11 +23,11 @@ export default function HomeRoute() {
   }, [router, user]);
 
   return (
-    <Layout onSignInSuccess={updateUser}>
+    <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <HomePage />
-    </Layout>
+    </>
   );
 }

@@ -18,44 +18,40 @@ import { Header } from "../header/header";
 import { NavigationDropdown } from "../navigation/dropdown/dropdown";
 import { NavigationSidebar } from "../navigation/sidebar/sidebar";
 
-interface LayoutContentProps {
+interface ContentProps {
   heightOffset: number;
 }
 
 interface LayoutProps {
   children: ReactNode;
-  onSignInSuccess: (userData: User) => void;
-};
+  contentHeightOffset: number;
+  isMobile: boolean;
+  navigationDropdownHeightOffset: number;
+  onLogInButtonClick: () => void;
+  onLogOutButtonClick: () => void;
+  user: User | null;
+}
 
-const LayoutContent = styled.main<LayoutContentProps>`
+const Content = styled.main<ContentProps>`
   min-height: ${({ heightOffset }) => {
     return `calc(100vh - ${heightOffset}px)`;
   }};
 `;
 
-const Layout = ({ children, onSignInSuccess }: LayoutProps) => {
+const Layout = ({
+  children,
+  contentHeightOffset = 0,
+  isMobile,
+  navigationDropdownHeightOffset = 0,
+  onLogInButtonClick,
+  onLogOutButtonClick,
+  user,
+}: LayoutProps) => {
   const [isNavigationDropdownOpen, setIsNavigationDropdownOpen] =
     useState(false);
-  const user = useSelector(selectUser);
-
-  const modalManagerContext = useContext(ModalManagerContext);
-  const { hideModal, showModal } = modalManagerContext;
-
-  const mainContentHeightOffset = useHeaderAndFooterHeightOffset();
-  const navigationDropdownHeightOffset = useHeaderHeightOffset();
-
-  const { isMobile } = useWindowBreakpoint();
 
   const toggleDropdown = () => {
     setIsNavigationDropdownOpen(!isNavigationDropdownOpen);
-  };
-
-  const onFormSubmit = (signUpData: AuthRequestData) => {
-    const { password, email } = signUpData;
-    fetch(`/api/auth/signIn?password=${password}&userName=${email}`)
-      .then((response) => response.json())
-      .then((userData) => onSignInSuccess(userData))
-      .catch((error) => console.log(error));
   };
 
   return (
@@ -65,12 +61,8 @@ const Layout = ({ children, onSignInSuccess }: LayoutProps) => {
         isMobile={isMobile}
         isNavigationDropdownOpen={isNavigationDropdownOpen}
         onDropDownToggleButtonClick={toggleDropdown}
-        onLogInButtonClick={() =>
-          showModal(
-            <SignInModal onHide={hideModal} onFormSubmit={onFormSubmit} />
-          )
-        }
-        onLogOutButtonClick={() => {}}
+        onLogInButtonClick={onLogInButtonClick}
+        onLogOutButtonClick={onLogOutButtonClick}
       />
       {isMobile ? (
         <div className="position-relative">
@@ -79,17 +71,17 @@ const Layout = ({ children, onSignInSuccess }: LayoutProps) => {
             isOpen={isNavigationDropdownOpen}
             onLinkClick={toggleDropdown}
           />
-          <LayoutContent heightOffset={mainContentHeightOffset}>
+          <Content heightOffset={contentHeightOffset}>
             {children}
-          </LayoutContent>
+          </Content>
         </div>
       ) : (
         <div className="d-flex">
           <NavigationSidebar />
           <div className="w-100">
-            <LayoutContent heightOffset={mainContentHeightOffset}>
+            <Content heightOffset={contentHeightOffset}>
               <Container>{children}</Container>
-            </LayoutContent>
+            </Content>
           </div>
         </div>
       )}

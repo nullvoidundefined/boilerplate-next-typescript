@@ -8,7 +8,6 @@ import { siteTitle } from "../../src/constant";
 import { getAllItems } from "../../src/service";
 import { selectUser } from "../../src/state";
 import { Item } from "../../src/type";
-import { Layout } from "../../src/view/component";
 import { ItemListPage } from "../../src/view/page";
 
 type ItemsRouteProps = {
@@ -26,12 +25,12 @@ export default function ItemsRoute({ items }: ItemsRouteProps) {
   }, [router, user]);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <ItemListPage items={items} />
-    </Layout>
+    </>
   );
 }
 

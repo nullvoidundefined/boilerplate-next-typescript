@@ -18,11 +18,11 @@ export default function ItemDetailRoute() {
   }, [router, user]);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>User Profile</title>
       </Head>
       User Page
-    </Layout>
+    </>
   );
 }

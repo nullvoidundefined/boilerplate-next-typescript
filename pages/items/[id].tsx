@@ -13,9 +13,7 @@ import { useSelector } from "react-redux";
 import { getAllItemIds, getItemData } from "../../src/service";
 import { selectUser } from "../../src/state";
 import { Item } from "../../src/type";
-import { Layout } from "../../src/view/component";
 import { ItemDetailPage } from "../../src/view/page";
-
 
 type ItemRouteType = {
   item: Item;
@@ -33,14 +31,13 @@ export default function ItemDetailRoute({ item }: ItemRouteType) {
     }
   }, [router, user]);
 
-
   return (
-    <Layout>
+    <>
       <Head>
         <title>{title}</title>
       </Head>
       <ItemDetailPage title={title} />
-    </Layout>
+    </>
   );
 }
 
