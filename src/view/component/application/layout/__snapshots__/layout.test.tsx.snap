@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.c6 {
+  background-color: blue;
+  height: 120px;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.c1 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: red;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.c4 {
+  background-color: green;
+  max-width: 160px;
+  min-height: calc(100vh - 0px);
+  width: 160px;
+}
+
+.c0 {
+  min-width: 390px;
+}
+
+.c5 {
+  min-height: calc(100vh - 0px);
+}
+
+<div
+  className="c0"
+>
+  <header
+    className="c1"
+  >
+    <h1>
+      VIBE BIO
+    </h1>
+    <div
+      className="c2"
+    >
+      <button
+        className="c3 btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Log In
+        </span>
+      </button>
+    </div>
+  </header>
+  <div
+    className="d-flex"
+  >
+    <div
+      className="c4"
+    >
+      Sidebar
+    </div>
+    <div
+      className="w-100"
+    >
+      <main
+        className="c5"
+      >
+        <div
+          className="container"
+        >
+          Hello Layout!
+        </div>
+      </main>
+    </div>
+  </div>
+  <footer
+    className="c6"
+  >
+    Footer
+  </footer>
+</div>
+`;

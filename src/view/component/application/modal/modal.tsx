@@ -11,7 +11,7 @@ interface ModalProps {
   initialContent?: ReactNode | null;
 }
 
-const Modal = forwardRef(({ initialContent }: ModalProps, ref) => {
+const Modal = forwardRef(({ initialContent = null }: ModalProps, ref) => {
   const [modalContent, setModalContent] =
     useState<ReactNode | null>(initialContent);
 

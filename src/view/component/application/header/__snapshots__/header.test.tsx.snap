@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.c2 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: red;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 60px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+<header
+  className="c0"
+>
+  <h1>
+    VIBE BIO
+  </h1>
+  <div
+    className="c1"
+  >
+    <button
+      className="c2 btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        Log Out
+      </span>
+    </button>
+    <button
+      className="c2 btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Open Menu
+    </button>
+  </div>
+</header>
+`;

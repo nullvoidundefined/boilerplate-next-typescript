@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<footer
+  className="sc-ccc5a96a-0 iFPUnX"
+>
+  Footer
+</footer>
+`;
