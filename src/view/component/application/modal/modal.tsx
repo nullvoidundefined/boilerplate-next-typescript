@@ -5,10 +5,15 @@ import React, {
   useState,
   useMemo,
 } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal as BSModal } from "react-bootstrap";
 
-const ModalManager = forwardRef((_props, ref) => {
-  const [modalContent, setModalContent] = useState<ReactNode | null>(null);
+interface ModalProps {
+  initialContent?: ReactNode | null;
+}
+
+const Modal = forwardRef(({ initialContent }: ModalProps, ref) => {
+  const [modalContent, setModalContent] =
+    useState<ReactNode | null>(initialContent);
 
   const doShow = useMemo(() => {
     return modalContent !== null;
@@ -25,12 +30,12 @@ const ModalManager = forwardRef((_props, ref) => {
   }));
 
   return (
-    <Modal show={doShow} onHide={() => setModalContent(null)}>
+    <BSModal show={doShow} onHide={() => setModalContent(null)}>
       {modalContent}
-    </Modal>
+    </BSModal>
   );
 });
 
-ModalManager.displayName = "ModalProvider";
+Modal.displayName = "ModalProvider";
 
-export { ModalManager };
+export { Modal };

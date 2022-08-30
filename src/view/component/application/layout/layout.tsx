@@ -1,11 +1,12 @@
 import { ReactNode, useState } from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
+import { APPLICATION_DIMENSION } from "../../../../constant";
 import { User } from "../../../../type";
 import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
-import { NavigationDropdown } from "../navigation/dropdown/dropdown";
-import { NavigationSidebar } from "../navigation/sidebar/sidebar";
+import { NavigationDropdown } from "../navigation/dropdown/navigationDropdown";
+import { NavigationSidebar } from "../navigation/sidebar/navigationSidebar";
 
 interface ContentProps {
   heightOffset: number;
@@ -21,6 +22,10 @@ interface LayoutProps {
   user: User | null;
 }
 
+const StyledLayout = styled.div`
+  min-width: ${APPLICATION_DIMENSION.MINIMUM_WIDTH}px;
+`
+
 const Content = styled.main<ContentProps>`
   min-height: ${({ heightOffset }) => {
     return `calc(100vh - ${heightOffset}px)`;
@@ -29,9 +34,9 @@ const Content = styled.main<ContentProps>`
 
 const Layout = ({
   children,
-  contentHeightOffset = 0,
+  contentHeightOffset,
   isMobile,
-  navigationDropdownHeightOffset = 0,
+  navigationDropdownHeightOffset,
   onLogInButtonClick,
   onLogOutButtonClick,
   user,
@@ -44,7 +49,7 @@ const Layout = ({
   };
 
   return (
-    <>
+    <StyledLayout>
       <Header
         isAuth={Boolean(user)}
         isMobile={isMobile}
@@ -64,7 +69,7 @@ const Layout = ({
         </div>
       ) : (
         <div className="d-flex">
-          <NavigationSidebar />
+          <NavigationSidebar heightOffset={contentHeightOffset}/>
           <div className="w-100">
             <Content heightOffset={contentHeightOffset}>
               <Container>{children}</Container>
@@ -73,7 +78,7 @@ const Layout = ({
         </div>
       )}
       <Footer />
-    </>
+    </StyledLayout>
   );
 };
 

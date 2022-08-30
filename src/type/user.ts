@@ -1,4 +1,5 @@
 type User = {
-    name: "Bob Smith",
-}
-export type { User }
+  name: string;
+};
+
+export type { User };
