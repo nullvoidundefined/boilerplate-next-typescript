@@ -1,17 +1,17 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Layout } from "./layout";
+import { ApplicationLayout } from "./applicationLayout";
 import { noop } from "lodash";
 import { mockUser } from "../../../../data";
 import { APPLICATION_DIMENSION } from "../../../../constant";
 
 export default {
   title: "Component/Application/Layout",
-  component: Layout,
-} as ComponentMeta<typeof Layout>;
+  component: ApplicationLayout,
+} as ComponentMeta<typeof ApplicationLayout>;
 
-const Template: ComponentStory<typeof Layout> = (args) => <Layout {...args} />;
+const Template: ComponentStory<typeof ApplicationLayout> = (args) => <ApplicationLayout {...args} />;
 
 export const DesktopAuth = Template.bind({});
 DesktopAuth.args = {

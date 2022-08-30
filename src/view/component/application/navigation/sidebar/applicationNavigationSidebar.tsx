@@ -5,11 +5,11 @@ import {
   APPLICATION_DIMENSION,
 } from "../../../../../constant";
 
-interface NavigationSidebarProps {
+interface ApplicationNavigationSidebarProps {
   heightOffset: number;
 }
 
-const StyledNavigationSidebar = styled.div<NavigationSidebarProps>`
+const StyledApplicationNavigationSidebar = styled.div<ApplicationNavigationSidebarProps>`
   background-color: ${APPLICATION_COLOR.SIDEBAR_BACKGROUND};
   max-width: ${APPLICATION_DIMENSION.SIDEBAR_WIDTH_DESKTOP}px;
   min-height: ${({ heightOffset }) => {
@@ -18,12 +18,12 @@ const StyledNavigationSidebar = styled.div<NavigationSidebarProps>`
   width: ${APPLICATION_DIMENSION.SIDEBAR_WIDTH_DESKTOP}px;
 `;
 
-const NavigationSidebar = ({ heightOffset }: NavigationSidebarProps) => {
+const ApplicationNavigationSidebar = ({ heightOffset }: ApplicationNavigationSidebarProps) => {
   return (
-    <StyledNavigationSidebar heightOffset={heightOffset}>
+    <StyledApplicationNavigationSidebar heightOffset={heightOffset}>
       Sidebar
-    </StyledNavigationSidebar>
+    </StyledApplicationNavigationSidebar>
   );
 };
 
-export { NavigationSidebar };
+export { ApplicationNavigationSidebar };

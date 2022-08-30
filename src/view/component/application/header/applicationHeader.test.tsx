@@ -1,7 +1,8 @@
-import { Header } from "./header";
+import 'jest-styled-components'
+
+import { ApplicationHeader } from "./applicationHeader";
 import renderer from "react-test-renderer";
 import { noop } from "lodash";
-import 'jest-styled-components'
 
 it("renders correctly", () => {
   const props = {
@@ -10,6 +11,6 @@ it("renders correctly", () => {
     onLogInButtonClick: () => noop(),
     onLogOutButtonClick: () => noop(),
   };
-  const component = renderer.create(<Header {...props} />).toJSON();
+  const component = renderer.create(<ApplicationHeader {...props} />).toJSON();
   expect(component).toMatchSnapshot();
 });

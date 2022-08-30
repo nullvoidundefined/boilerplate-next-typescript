@@ -1,16 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { NavigationDropdown } from "./navigationDropdown";
+import { ApplicationNavigationDropdown } from "./applicationNavigationDropdown";
 import { APPLICATION_DIMENSION } from "../../../../../constant";
 
 export default {
   title: "Component/Application/NavigationDropdown",
-  component: NavigationDropdown,
-} as ComponentMeta<typeof NavigationDropdown>;
+  component: ApplicationNavigationDropdown,
+} as ComponentMeta<typeof ApplicationNavigationDropdown>;
 
-const Template: ComponentStory<typeof NavigationDropdown> = (args) => (
-  <NavigationDropdown {...args} />
+const Template: ComponentStory<typeof ApplicationNavigationDropdown> = (args) => (
+  <ApplicationNavigationDropdown {...args} />
 );
 
 export const Default = Template.bind({});

@@ -4,7 +4,7 @@ import { APPLICATION_COLOR, APPLICATION_DIMENSION } from "../../../../constant";
 
 // TODO add conditional typechecking to negate the need for the default onDropDownToggleButtonClick prop
 
-interface HeaderProps {
+interface ApplicationHeaderProps {
   isAuth: boolean;
   isMobile: boolean;
   onLogInButtonClick: () => void;
@@ -14,7 +14,7 @@ interface HeaderProps {
   onDropDownToggleButtonClick?: () => void;
 }
 
-interface StyledHeaderProps {
+interface StyledApplicationHeaderProps {
   isMobile: boolean;
 }
 
@@ -23,7 +23,7 @@ const StyledButtonContainer = styled.div`
   gap: 10px;
 `;
 
-const StyledHeader = styled.header<StyledHeaderProps>`
+const StyledApplicationHeader = styled.header<StyledApplicationHeaderProps>`
   align-items: center;
   background-color: ${APPLICATION_COLOR.HEADER_BACKGROUND};
   display: flex;
@@ -35,16 +35,16 @@ const StyledHeader = styled.header<StyledHeaderProps>`
   padding: 10px;
 `;
 
-const Header = ({
+const ApplicationHeader = ({
   isAuth,
   isMobile,
   isNavigationDropdownOpen,
   onDropDownToggleButtonClick = () => null,
   onLogInButtonClick,
   onLogOutButtonClick,
-}: HeaderProps) => {
+}: ApplicationHeaderProps) => {
   return (
-    <StyledHeader isMobile={isMobile}>
+    <StyledApplicationHeader isMobile={isMobile}>
       <h1>VIBE BIO</h1>
       <StyledButtonContainer>
         {isAuth ? (
@@ -62,8 +62,8 @@ const Header = ({
           </Button>
         ) : null}
       </StyledButtonContainer>
-    </StyledHeader>
+    </StyledApplicationHeader>
   );
 };
 
-export { Header };
+export { ApplicationHeader };

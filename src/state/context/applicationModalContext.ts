@@ -1,9 +1,9 @@
 import { noop } from "lodash";
 import { createContext, ReactNode } from "react";
 
-const ModalContext = createContext({
+const ApplicationModalContext = createContext({
   hideModal: () => noop(),
   showModal: (modalContent: ReactNode) => console.log(modalContent),
 });
 
-export { ModalContext };
+export { ApplicationModalContext };

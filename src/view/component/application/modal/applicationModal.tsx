@@ -5,13 +5,13 @@ import React, {
   useState,
   useMemo,
 } from "react";
-import { Modal as BSModal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 interface ModalProps {
   initialContent?: ReactNode | null;
 }
 
-const Modal = forwardRef(({ initialContent = null }: ModalProps, ref) => {
+const ApplicationModal = forwardRef(({ initialContent = null }: ModalProps, ref) => {
   const [modalContent, setModalContent] =
     useState<ReactNode | null>(initialContent);
 
@@ -30,12 +30,12 @@ const Modal = forwardRef(({ initialContent = null }: ModalProps, ref) => {
   }));
 
   return (
-    <BSModal show={doShow} onHide={() => setModalContent(null)}>
+    <Modal show={doShow} onHide={() => setModalContent(null)}>
       {modalContent}
-    </BSModal>
+    </Modal>
   );
 });
 
-Modal.displayName = "ModalProvider";
+ApplicationModal.displayName = "ModalProvider";
 
-export { Modal };
+export { ApplicationModal };

@@ -1,18 +1,20 @@
 import { ReactNode, useState } from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
+
+import { ApplicationFooter } from "../footer/applicationFooter";
+import { ApplicationHeader } from "../header/applicationHeader";
+import { ApplicationNavigationDropdown } from "../navigation/dropdown/applicationNavigationDropdown";
+import { ApplicationNavigationSidebar } from "../navigation/sidebar/applicationNavigationSidebar";
+
 import { APPLICATION_DIMENSION } from "../../../../constant";
 import { User } from "../../../../type";
-import { Footer } from "../footer/footer";
-import { Header } from "../header/header";
-import { NavigationDropdown } from "../navigation/dropdown/navigationDropdown";
-import { NavigationSidebar } from "../navigation/sidebar/navigationSidebar";
 
 interface ContentProps {
   heightOffset: number;
 }
 
-interface LayoutProps {
+interface ApplicationLayoutProps {
   children: ReactNode;
   contentHeightOffset: number;
   isMobile: boolean;
@@ -22,17 +24,17 @@ interface LayoutProps {
   user: User | null;
 }
 
-const StyledLayout = styled.div`
+const StyledApplicationLayout = styled.div`
   min-width: ${APPLICATION_DIMENSION.MINIMUM_WIDTH}px;
-`
+`;
 
-const Content = styled.main<ContentProps>`
+const ApplicationContent = styled.main<ContentProps>`
   min-height: ${({ heightOffset }) => {
     return `calc(100vh - ${heightOffset}px)`;
   }};
 `;
 
-const Layout = ({
+const ApplicationLayout = ({
   children,
   contentHeightOffset,
   isMobile,
@@ -40,7 +42,7 @@ const Layout = ({
   onLogInButtonClick,
   onLogOutButtonClick,
   user,
-}: LayoutProps) => {
+}: ApplicationLayoutProps) => {
   const [isNavigationDropdownOpen, setIsNavigationDropdownOpen] =
     useState(false);
 
@@ -49,8 +51,8 @@ const Layout = ({
   };
 
   return (
-    <StyledLayout>
-      <Header
+    <StyledApplicationLayout>
+      <ApplicationHeader
         isAuth={Boolean(user)}
         isMobile={isMobile}
         isNavigationDropdownOpen={isNavigationDropdownOpen}
@@ -60,26 +62,26 @@ const Layout = ({
       />
       {isMobile ? (
         <div className="position-relative">
-          <NavigationDropdown
+          <ApplicationNavigationDropdown
             heightOffset={navigationDropdownHeightOffset}
             isOpen={isNavigationDropdownOpen}
             onLinkClick={toggleDropdown}
           />
-          <Content heightOffset={contentHeightOffset}>{children}</Content>
+          <ApplicationContent heightOffset={contentHeightOffset}>{children}</ApplicationContent>
         </div>
       ) : (
         <div className="d-flex">
-          <NavigationSidebar heightOffset={contentHeightOffset}/>
+          <ApplicationNavigationSidebar heightOffset={contentHeightOffset} />
           <div className="w-100">
-            <Content heightOffset={contentHeightOffset}>
+            <ApplicationContent heightOffset={contentHeightOffset}>
               <Container>{children}</Container>
-            </Content>
+            </ApplicationContent>
           </div>
         </div>
       )}
-      <Footer />
-    </StyledLayout>
+      <ApplicationFooter />
+    </StyledApplicationLayout>
   );
 };
 
-export { Layout };
+export { ApplicationLayout };

@@ -1,14 +1,14 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Header } from "./header";
+import { ApplicationHeader } from "./applicationHeader";
 
 export default {
   title: "Component/Application/Header",
-  component: Header,
-} as ComponentMeta<typeof Header>;
+  component: ApplicationHeader,
+} as ComponentMeta<typeof ApplicationHeader>;
 
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
+const Template: ComponentStory<typeof ApplicationHeader> = (args) => <ApplicationHeader {...args} />;
 
 export const Desktop = Template.bind({});
 Desktop.args = { isMobile: false };

@@ -1,6 +1,6 @@
 import "jest-styled-components";
 
-import { Layout } from "./layout";
+import { ApplicationLayout } from "./applicationLayout";
 import renderer from "react-test-renderer";
 import { noop } from "lodash";
 
@@ -14,6 +14,6 @@ it("renders correctly", () => {
     onLogOutButtonClick: () => noop(),
     user: null,
   };
-  const component = renderer.create(<Layout {...props} />).toJSON();
+  const component = renderer.create(<ApplicationLayout {...props} />).toJSON();
   expect(component).toMatchSnapshot();
 });

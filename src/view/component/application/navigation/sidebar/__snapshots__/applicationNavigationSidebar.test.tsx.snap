@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+.c0 {
+  background-color: green;
+  max-width: 160px;
+  min-height: calc(100vh - 0px);
+  width: 160px;
+}
+
+<div
+  className="c0"
+>
+  Sidebar
+</div>
+`;

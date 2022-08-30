@@ -13,9 +13,9 @@ import {
   useWindowBreakpoint,
   wrapper,
 } from "../src/state";
-import { Layout, Modal } from "../src/view/component";
+import { ApplicationLayout, ApplicationModal } from "../src/view/component";
 import { ReactNode, useRef } from "react";
-import { ModalContext } from "../src/state";
+import { ApplicationModalContext } from "../src/state";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthRequestData, User } from "../src/type";
 import { SignInModal } from "../src/view/component/modal/signIn/signIn";
@@ -61,9 +61,9 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
 
   return (
     <>
-      <Modal ref={modalRef} />
-      <ModalContext.Provider value={{ hideModal, showModal }}>
-        <Layout
+      <ApplicationModal ref={modalRef} />
+      <ApplicationModalContext.Provider value={{ hideModal, showModal }}>
+        <ApplicationLayout
           contentHeightOffset={contentHeightOffset}
           navigationDropdownHeightOffset={navigationDropdownHeightOffset}
           isMobile={isMobile}
@@ -72,8 +72,8 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
           user={user}
         >
           <Route {...pageProps} />
-        </Layout>
-      </ModalContext.Provider>
+        </ApplicationLayout>
+      </ApplicationModalContext.Provider>
     </>
   );
 };
