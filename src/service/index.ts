@@ -6,6 +6,8 @@ export { getItemData } from "./item/getItemData/getItemData";
 export { authSignIn } from "./state/remote/auth/signIn/authSignIn";
 export { authSignOut } from "./state/remote/auth/signOut/authSignOut";
 export { authSignUp } from "./state/remote/auth/signUp/authSignUp";
+//
+export { initializeDatabaseTables } from "./state/remote/database/initializeTables";
 // Proposal
 export { createProposal } from "./state/remote/proposal/create/createProposal";
 export { deleteProposal } from "./state/remote/proposal/delete/deleteProposal";
