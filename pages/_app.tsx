@@ -13,25 +13,33 @@ import {
     useWindowBreakpoint,
     wrapper,
 } from "../src/state";
-import { ApplicationLayout, ApplicationModal } from "../src/view/component";
-import { ReactNode, useRef } from "react";
+import {
+    ApplicationLayout,
+    ApplicationModal,
+    SplashScreen,
+} from "../src/view/component";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { ApplicationModalContext } from "../src/state";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthRequestData, User } from "../src/type";
-import { SignInModal } from "../src/view/component/modal/signIn/signIn";
+import { SignInModal } from "../src/view/component";
 import { noop } from "lodash";
 import { useRouter } from "next/router";
 import ErrorBoundary from "../src/view/component/errorBoundary/errorBoundary";
 import { ErrorPage } from "../src/view/page/error/errorPage";
 
 const App = ({ Component: Route, pageProps }: AppProps) => {
+    const [doShowSplashScreen, setDoShowSplashScreen] = useState(true);
+
     const user = useSelector(selectUser);
-    const contentHeightOffset = useHeaderAndFooterHeightOffset();
-    const navigationDropdownHeightOffset = useHeaderHeightOffset();
-    const { isMobile } = useWindowBreakpoint();
 
     const dispatch = useDispatch();
     const router = useRouter();
+
+    const { isMobile } = useWindowBreakpoint();
+
+    const contentHeightOffset = useHeaderAndFooterHeightOffset();
+    const navigationDropdownHeightOffset = useHeaderHeightOffset();
 
     useLagRadar();
 
@@ -71,23 +79,32 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
         dispatch(setUser(user));
     };
 
+    useEffect(() => {
+        setTimeout(() => {
+            setDoShowSplashScreen(false);
+        }, 1000);
+    }, []);
+
     return (
         <ErrorBoundary fallback={<ErrorPage />}>
             <ApplicationModal ref={modalRef} />
             <ApplicationModalContext.Provider value={{ hideModal, showModal }}>
-                <ApplicationLayout
-                    contentHeightOffset={contentHeightOffset}
-                    navigationDropdownHeightOffset={
-                        navigationDropdownHeightOffset
-                    }
-                    isMobile={isMobile}
-                    onLogInButtonClick={showSignInModal}
-                    onLogOutButtonClick={() => noop}
-                    onLogoClick={navigateToHomePage}
-                    user={user}
-                >
-                    <Route {...pageProps} />
-                </ApplicationLayout>
+                <div className="position-relative w-100">
+                    {doShowSplashScreen ? <SplashScreen /> : null}
+                    <ApplicationLayout
+                        contentHeightOffset={contentHeightOffset}
+                        navigationDropdownHeightOffset={
+                            navigationDropdownHeightOffset
+                        }
+                        isMobile={isMobile}
+                        onLogInButtonClick={showSignInModal}
+                        onLogOutButtonClick={() => noop}
+                        onLogoClick={navigateToHomePage}
+                        user={user}
+                    >
+                        <Route {...pageProps} />
+                    </ApplicationLayout>
+                </div>
             </ApplicationModalContext.Provider>
         </ErrorBoundary>
     );
