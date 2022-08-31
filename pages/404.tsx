@@ -1,3 +1,5 @@
+import { ErrorPage } from "../src/view/page";
+
 export default function PageNotFound() {
-    return <h1>404 - Page Not Found</h1>
-  }
+    return <ErrorPage />;
+}

@@ -1,15 +1,15 @@
 {
-  "extends": [
-    "next",
-    "prettier",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": ["unused-imports", "prettier", "storybook"],
-  "rules": {
-    "unused-imports/no-unused-imports": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-unused-vars": "error"
-  }
+    "extends": [
+        "next",
+        "prettier",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended"
+    ],
+    "plugins": ["unused-imports", "prettier", "storybook"],
+    "rules": {
+        "unused-imports/no-unused-imports": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-unused-vars": "error"
+    }
 }

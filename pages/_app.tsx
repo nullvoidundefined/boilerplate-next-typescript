@@ -21,6 +21,8 @@ import { AuthRequestData, User } from "../src/type";
 import { SignInModal } from "../src/view/component/modal/signIn/signIn";
 import { noop } from "lodash";
 import { useRouter } from "next/router";
+import ErrorBoundary from "../src/view/component/errorBoundary/errorBoundary";
+import { ErrorPage } from "../src/view/page/error/errorPage";
 
 const App = ({ Component: Route, pageProps }: AppProps) => {
     const user = useSelector(selectUser);
@@ -70,7 +72,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
     };
 
     return (
-        <>
+        <ErrorBoundary fallback={<ErrorPage />}>
             <ApplicationModal ref={modalRef} />
             <ApplicationModalContext.Provider value={{ hideModal, showModal }}>
                 <ApplicationLayout
@@ -87,7 +89,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
                     <Route {...pageProps} />
                 </ApplicationLayout>
             </ApplicationModalContext.Provider>
-        </>
+        </ErrorBoundary>
     );
 };
 
