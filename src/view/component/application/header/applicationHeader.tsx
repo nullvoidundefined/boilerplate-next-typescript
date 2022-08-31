@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Button } from "../../../design-system";
 import { APPLICATION_COLOR, APPLICATION_DIMENSION } from "../../../../constant";
+import { ApplicationLogo } from "../logo/applicationLogo";
 
 // TODO add conditional typechecking to negate the need for the default onDropDownToggleButtonClick prop
 
@@ -45,7 +46,7 @@ const ApplicationHeader = ({
 }: ApplicationHeaderProps) => {
   return (
     <StyledApplicationHeader isMobile={isMobile}>
-      <h1>VIBE BIO</h1>
+      <ApplicationLogo />
       <StyledButtonContainer>
         {isAuth ? (
           <Button onClick={onLogOutButtonClick}>

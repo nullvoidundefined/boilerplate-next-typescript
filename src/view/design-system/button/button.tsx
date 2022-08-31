@@ -1,19 +1,19 @@
 import { ReactNode } from "react";
-import { Button as BSButton } from "react-bootstrap";
+import { Button as BootstrapButton } from "react-bootstrap";
 import styled from "styled-components";
 interface ButtonProps {
-  children: ReactNode;
-  onClick: () => void;
+    children: ReactNode;
+    onClick: () => void;
 }
 
-const StyledButton = styled(BSButton)`
-  align-items: center;
-  display: flex;
-  height: 40px;
+const StyledButton = styled(BootstrapButton)`
+    align-items: center;
+    display: flex;
+    height: 40px;
 `;
 
 const Button = ({ children, onClick }: ButtonProps) => {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+    return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 export { Button };

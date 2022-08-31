@@ -4,7 +4,6 @@ import { Person } from "../../../type";
 
 import { VibeTable } from "./table";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Design-System/Table",
   component: VibeTable,

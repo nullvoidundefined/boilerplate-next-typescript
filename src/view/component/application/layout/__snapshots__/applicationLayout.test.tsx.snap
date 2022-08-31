@@ -66,7 +66,7 @@ exports[`renders correctly 1`] = `
     className="c1"
   >
     <h1>
-      VIBE BIO
+      LOGO
     </h1>
     <div
       className="c2"

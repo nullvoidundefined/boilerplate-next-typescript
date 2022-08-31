@@ -1,7 +1,7 @@
-export { CheckboxInputGroup } from "./checkbox/group";
-export { NumberInputGroup } from "./number/group";
-export { PhoneInput } from "./phone/input";
-export { PhoneInputGroup } from "./phone/group";
-export { TextAreaInputGroup } from "./textArea/group";
-export { TextInput } from "./text/input";
-export { TextInputGroup } from "./text/group";
+export { CheckboxInputGroup } from "./checkbox/checkboxInputGroup";
+export { NumberInputGroup } from "./number/numberInputGroup";
+export { PhoneInput } from "./phone/phoneInput";
+export { PhoneInputGroup } from "./phone/phoneInputGroup";
+export { TextAreaInputGroup } from "./textArea/textAreaInputGroup";
+export { TextInput } from "./text/textInput";
+export { TextInputGroup } from "./text/textInputGroup";

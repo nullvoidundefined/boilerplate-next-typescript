@@ -1,4 +1,3 @@
-
 type NumberInputProps = {
     value: number | undefined;
 
@@ -26,7 +25,7 @@ const NumberInput = ({
             className={`form-control ${className}`}
             disabled={disabled}
             id={id}
-            onChange={event => {
+            onChange={(event) => {
                 if (Number(event.target.value) < 0 && !allowNegativeNumbers) {
                     event.target.value = String(0);
                 }

@@ -1,6 +1,6 @@
-import { ErrorText } from "../../text/error";
-import { TextInput } from "./input";
-import { InputLabelGroup } from "../../text/inputLabel";
+import { ErrorText } from "../../../design-system/text/error";
+import { TextInput } from "./textInput";
+import { InputLabelGroup } from "../../../design-system/text/inputLabel";
 import { ChangeEvent } from "react";
 
 type TextInputGroupProps = {
@@ -8,7 +8,7 @@ type TextInputGroupProps = {
     label: string;
     onChange: (formDataKey: string, value: string) => void;
     value: string | undefined;
-    
+
     error?: string;
     placeholder?: string;
     sublabel?: string;
@@ -25,7 +25,11 @@ const TextInputGroup = ({
 }: TextInputGroupProps) => {
     return (
         <div className="mb-3">
-            <InputLabelGroup formDataKey={formDataKey} label={label} sublabel={sublabel} />
+            <InputLabelGroup
+                formDataKey={formDataKey}
+                label={label}
+                sublabel={sublabel}
+            />
             <TextInput
                 id={formDataKey}
                 onChange={(event: ChangeEvent) => {

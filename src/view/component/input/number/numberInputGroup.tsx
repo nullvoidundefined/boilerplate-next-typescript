@@ -1,6 +1,6 @@
-import { ErrorText } from "../../text/error";
-import { NumberInput } from "./input";
-import { InputLabelGroup } from "../../text/inputLabel";
+import { ErrorText } from "../../../design-system/text/error";
+import { NumberInput } from "./numberInput";
+import { InputLabelGroup } from "../../../design-system/text/inputLabel";
 import styled from "styled-components";
 
 type NumberInputGroupProps = {
@@ -36,7 +36,11 @@ const NumberInputGroup = ({
 }: NumberInputGroupProps) => {
     return (
         <div className="mb-3">
-            <InputLabelGroup formDataKey={formDataKey} label={label} sublabel={sublabel} />
+            <InputLabelGroup
+                formDataKey={formDataKey}
+                label={label}
+                sublabel={sublabel}
+            />
             <NumberInputGroupContainer fullWidth={fullWidth}>
                 <NumberInput
                     allowNegativeNumbers={allowNegativeNumbers}
