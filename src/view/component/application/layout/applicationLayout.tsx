@@ -11,77 +11,84 @@ import { APPLICATION_DIMENSION } from "../../../../constant";
 import { User } from "../../../../type";
 
 interface ContentProps {
-  heightOffset: number;
+    heightOffset: number;
 }
 
 interface ApplicationLayoutProps {
-  children: ReactNode;
-  contentHeightOffset: number;
-  isMobile: boolean;
-  navigationDropdownHeightOffset: number;
-  onLogInButtonClick: () => void;
-  onLogOutButtonClick: () => void;
-  user: User | null;
+    children: ReactNode;
+    contentHeightOffset: number;
+    isMobile: boolean;
+    navigationDropdownHeightOffset: number;
+    onLogInButtonClick: () => void;
+    onLogOutButtonClick: () => void;
+    onLogoClick: () => void;
+    user: User | null;
 }
 
 const StyledApplicationLayout = styled.div`
-  min-width: ${APPLICATION_DIMENSION.MINIMUM_WIDTH}px;
+    min-width: ${APPLICATION_DIMENSION.MINIMUM_WIDTH}px;
 `;
 
 const ApplicationContent = styled.main<ContentProps>`
-  min-height: ${({ heightOffset }) => {
-    return `calc(100vh - ${heightOffset}px)`;
-  }};
+    min-height: ${({ heightOffset }) => {
+        return `calc(100vh - ${heightOffset}px)`;
+    }};
 `;
 
 const ApplicationLayout = ({
-  children,
-  contentHeightOffset,
-  isMobile,
-  navigationDropdownHeightOffset,
-  onLogInButtonClick,
-  onLogOutButtonClick,
-  user,
+    children,
+    contentHeightOffset,
+    isMobile,
+    navigationDropdownHeightOffset,
+    onLogInButtonClick,
+    onLogOutButtonClick,
+    onLogoClick,
+    user,
 }: ApplicationLayoutProps) => {
-  const [isNavigationDropdownOpen, setIsNavigationDropdownOpen] =
-    useState(false);
+    const [isNavigationDropdownOpen, setIsNavigationDropdownOpen] =
+        useState(false);
 
-  const toggleDropdown = () => {
-    setIsNavigationDropdownOpen(!isNavigationDropdownOpen);
-  };
+    const toggleDropdown = () => {
+        setIsNavigationDropdownOpen(!isNavigationDropdownOpen);
+    };
 
-  return (
-    <StyledApplicationLayout>
-      <ApplicationHeader
-        isAuth={Boolean(user)}
-        isMobile={isMobile}
-        isNavigationDropdownOpen={isNavigationDropdownOpen}
-        onDropDownToggleButtonClick={toggleDropdown}
-        onLogInButtonClick={onLogInButtonClick}
-        onLogOutButtonClick={onLogOutButtonClick}
-      />
-      {isMobile ? (
-        <div className="position-relative">
-          <ApplicationNavigationDropdown
-            heightOffset={navigationDropdownHeightOffset}
-            isOpen={isNavigationDropdownOpen}
-            onLinkClick={toggleDropdown}
-          />
-          <ApplicationContent heightOffset={contentHeightOffset}>{children}</ApplicationContent>
-        </div>
-      ) : (
-        <div className="d-flex">
-          <ApplicationNavigationSidebar heightOffset={contentHeightOffset} />
-          <div className="w-100">
-            <ApplicationContent heightOffset={contentHeightOffset}>
-              <Container>{children}</Container>
-            </ApplicationContent>
-          </div>
-        </div>
-      )}
-      <ApplicationFooter />
-    </StyledApplicationLayout>
-  );
+    return (
+        <StyledApplicationLayout>
+            <ApplicationHeader
+                isAuth={Boolean(user)}
+                isMobile={isMobile}
+                isNavigationDropdownOpen={isNavigationDropdownOpen}
+                onDropDownToggleButtonClick={toggleDropdown}
+                onLogInButtonClick={onLogInButtonClick}
+                onLogOutButtonClick={onLogOutButtonClick}
+                onLogoClick={onLogoClick}
+            />
+            {isMobile ? (
+                <div className="position-relative">
+                    <ApplicationNavigationDropdown
+                        heightOffset={navigationDropdownHeightOffset}
+                        isOpen={isNavigationDropdownOpen}
+                        onLinkClick={toggleDropdown}
+                    />
+                    <ApplicationContent heightOffset={contentHeightOffset}>
+                        {children}
+                    </ApplicationContent>
+                </div>
+            ) : (
+                <div className="d-flex">
+                    <ApplicationNavigationSidebar
+                        heightOffset={contentHeightOffset}
+                    />
+                    <div className="w-100">
+                        <ApplicationContent heightOffset={contentHeightOffset}>
+                            <Container>{children}</Container>
+                        </ApplicationContent>
+                    </div>
+                </div>
+            )}
+            <ApplicationFooter />
+        </StyledApplicationLayout>
+    );
 };
 
 export { ApplicationLayout };
