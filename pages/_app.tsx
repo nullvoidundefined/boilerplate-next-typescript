@@ -90,6 +90,15 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
         }
     }, [dispatch, hasRequiredApplicationData]);
 
+    useEffect(() => {
+        fetch(`/api/database/ping`)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
     return (
         <ErrorBoundary fallback={<ErrorPage />}>
             <ApplicationModal ref={modalRef} />

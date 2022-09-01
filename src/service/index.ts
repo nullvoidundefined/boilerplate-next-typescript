@@ -3,16 +3,16 @@ export { getAllItemIds } from "./item/getAllItemIds/getAllItemIds";
 export { getAllItems } from "./item/getAllItems/getAllItems";
 export { getItemData } from "./item/getItemData/getItemData";
 // Auth
-export { authSignIn } from "./state/remote/auth/signIn/authSignIn";
-export { authSignOut } from "./state/remote/auth/signOut/authSignOut";
-export { authSignUp } from "./state/remote/auth/signUp/authSignUp";
+export { authSignIn } from "../database/auth/signIn/authSignIn";
+export { authSignOut } from "../database/auth/signOut/authSignOut";
+export { authSignUp } from "../database/auth/signUp/authSignUp";
 //
-export { initializeDatabaseTables } from "./state/remote/database/initializeTables";
+export { initializeDatabaseTables } from "../database/initializeTables";
 // Proposal
-export { createProposal } from "./state/remote/proposal/create/createProposal";
-export { deleteProposal } from "./state/remote/proposal/delete/deleteProposal";
-export { editProposal } from "./state/remote/proposal/edit/editProposal";
-export { getProposal } from "./state/remote/proposal/get/getProposal";
-export { getProposals } from "./state/remote/proposal/get/getProposals";
+export { createProposal } from "./proposal/create/createProposal";
+export { deleteProposal } from "./proposal/delete/deleteProposal";
+export { editProposal } from "./proposal/edit/editProposal";
+export { getProposal } from "./proposal/get/getProposal";
+export { getProposals } from "./proposal/get/getProposals";
 // Form validation
 export { validateSignInForm } from "./validate/form/signIn/validateSignInForm";
