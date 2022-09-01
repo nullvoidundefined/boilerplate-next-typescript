@@ -12,7 +12,7 @@ export default function HomeRoute() {
 
     useEffect(() => {
         if (user) {
-            router.push("/items");
+            router.push("/proposals");
         }
     }, [router, user]);
 

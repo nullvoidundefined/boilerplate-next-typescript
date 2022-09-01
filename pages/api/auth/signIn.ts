@@ -15,9 +15,9 @@ const signInRoute = async (req: Request, res: Response) => {
             try {
                 await authSignIn(userName as string, password as string).then(
                     (result) => {
-                        const { user, success } = result;
+                        const { data, success } = result;
                         if (success) {
-                            res.status(200).json(user);
+                            res.status(200).json(data);
                         } else {
                             res.status(401).json("Unauthorized");
                         }

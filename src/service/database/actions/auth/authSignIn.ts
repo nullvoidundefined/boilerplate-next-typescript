@@ -12,9 +12,9 @@ const authSignIn = async (userName: string, password: string) => {
     const result = await client.query(authSignInQuery);
     await client.clean();
     if (result.rows.length > 0) {
-        return { user: result.rows[0], success: true };
+        return { data: result.rows[0], success: true };
     } else {
-        return { user: null, success: false };
+        return { data: null, success: false };
     }
 };
 

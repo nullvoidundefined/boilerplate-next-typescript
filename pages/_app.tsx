@@ -62,7 +62,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
             .then((userData) => {
                 hideModal();
                 updateUser(userData);
-                router.push("/items");
+                router.push("/proposals");
             })
             .catch((error) => console.log(error));
     };
