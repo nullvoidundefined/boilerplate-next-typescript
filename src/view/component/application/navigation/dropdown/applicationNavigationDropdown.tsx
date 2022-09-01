@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR, DIMENSION } from "../../../../../constant";
+import { COLOR } from "../../../../../constant";
 
 interface ApplicationNavigationDropdownProps {
     isOpen: boolean;
