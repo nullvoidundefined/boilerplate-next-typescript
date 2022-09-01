@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ApplicationLogo } from "../../application/logo/applicationLogo";
 
 const StyledSplashScreenContainer = styled.div`
     align-items: center;
@@ -18,7 +19,7 @@ const StyledSplashScreenContainer = styled.div`
 const SplashScreen = () => {
     return (
         <StyledSplashScreenContainer>
-            <div>SPLASH SCREEN</div>
+            <ApplicationLogo />
         </StyledSplashScreenContainer>
     );
 };

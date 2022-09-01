@@ -7,3 +7,5 @@ export { SignInForm } from "./form/signIn/signInForm";
 export { SplashScreen } from "./screen/splash/splashScreen";
 // Modals
 export { SignInModal } from "./modal/signIn/signInModal";
+
+export { ErrorBoundary } from "./errorBoundary/errorBoundary";

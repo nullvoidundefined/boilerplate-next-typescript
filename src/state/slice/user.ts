@@ -3,24 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "../store";
 
 export const userSlice = createSlice({
-  name: "user",
-  initialState: {
-    user: null,
-  },
-  reducers: {
-    setUser(state, action) {
-      state.user = action.payload;
+    name: "user",
+    initialState: {
+        user: null,
     },
-  },
+    reducers: {
+        setUser(state, action) {
+            state.user = action.payload;
+        },
+    },
 
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      return {
-        ...state,
-        ...action.payload.user,
-      };
+    extraReducers: {
+        [HYDRATE]: (state, action) => {
+            return {
+                ...state,
+                ...action.payload.user,
+            };
+        },
     },
-  },
 });
 
 export const { setUser } = userSlice.actions;

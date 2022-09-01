@@ -1,15 +1,21 @@
 import Head from "next/head";
+import { useSelector } from "react-redux";
+import { selectHasRequiredApplicationData } from "../src/state/slice/application";
 
-import { siteTitle } from "../src/constant";
+import { SplashScreen } from "../src/view/component";
 import { HomePage } from "../src/view/page";
 
 export default function HomeRoute() {
+    const hasRequireApplicationdData = useSelector(
+        selectHasRequiredApplicationData
+    );
+
     return (
         <>
             <Head>
-                <title>{siteTitle}</title>
+                <title>Home Page</title>
             </Head>
-            <HomePage />
+            {hasRequireApplicationdData ? <HomePage /> : <SplashScreen />}
         </>
     );
 }

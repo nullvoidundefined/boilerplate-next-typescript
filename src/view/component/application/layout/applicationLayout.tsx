@@ -7,7 +7,7 @@ import { ApplicationHeader } from "../header/applicationHeader";
 import { ApplicationNavigationDropdown } from "../navigation/dropdown/applicationNavigationDropdown";
 import { ApplicationNavigationSidebar } from "../navigation/sidebar/applicationNavigationSidebar";
 
-import { APPLICATION_DIMENSION } from "../../../../constant";
+import { COLOR, DIMENSION } from "../../../../constant";
 import { User } from "../../../../type";
 
 interface ContentProps {
@@ -26,10 +26,11 @@ interface ApplicationLayoutProps {
 }
 
 const StyledApplicationLayout = styled.div`
-    min-width: ${APPLICATION_DIMENSION.MINIMUM_WIDTH}px;
+    min-width: ${DIMENSION.MINIMUM_WIDTH}px;
 `;
 
 const ApplicationContent = styled.main<ContentProps>`
+    background-color: ${COLOR.CONTENT_BACKGROUND};
     min-height: ${({ heightOffset }) => {
         return `calc(100vh - ${heightOffset}px)`;
     }};

@@ -1,4 +1,4 @@
-export const APPLICATION_DIMENSION = {
+export const DIMENSION = {
     BREAKPOINT: 996,
     MINIMUM_WIDTH: 420,
 

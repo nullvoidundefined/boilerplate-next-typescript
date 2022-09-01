@@ -7,7 +7,7 @@ import type {
 
 const initializeDatabaseTables = async (_req: Request, res: Response) => {
     try {
-        const initializeTablesQuery = `CREATE TABLE users (
+        const initializeUsersTableQuery = `CREATE TABLE users (
 		    created TIMESTAMP NOT NULL,
             email VARCHAR ( 255 ) UNIQUE NOT NULL,
             id serial PRIMARY KEY,
@@ -20,10 +20,19 @@ const initializeDatabaseTables = async (_req: Request, res: Response) => {
             VALUES (CURRENT_TIMESTAMP, 'root@root.com', 'swordfish', 'root');
         `;
 
+        const initializeProposalsTableQuery = `CREATE TABLE users (
+		    created TIMESTAMP NOT NULL,
+            email VARCHAR ( 255 ) UNIQUE NOT NULL,
+            id serial PRIMARY KEY,
+		    password VARCHAR ( 50 ) NOT NULL,
+		    username VARCHAR ( 50 ) UNIQUE NOT NULL
+	    );`;
+
         const client = getDatabaseClient();
         await client.connect();
-        await client.query(initializeTablesQuery);
+        await client.query(initializeUsersTableQuery);
         await client.query(initializeDefaultUserQuery);
+        await client.query(initializeProposalsTableQuery);
         await client.clean();
         console.log("initializeTablesQuery success");
         res.status(200).json("Tables created");

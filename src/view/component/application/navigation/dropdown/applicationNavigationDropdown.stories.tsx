@@ -2,19 +2,19 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { ApplicationNavigationDropdown } from "./applicationNavigationDropdown";
-import { APPLICATION_DIMENSION } from "../../../../../constant";
+import { DIMENSION } from "../../../../../constant";
 
 export default {
-  title: "Component/Application/NavigationDropdown",
-  component: ApplicationNavigationDropdown,
+    title: "Component/Application/NavigationDropdown",
+    component: ApplicationNavigationDropdown,
 } as ComponentMeta<typeof ApplicationNavigationDropdown>;
 
-const Template: ComponentStory<typeof ApplicationNavigationDropdown> = (args) => (
-  <ApplicationNavigationDropdown {...args} />
-);
+const Template: ComponentStory<typeof ApplicationNavigationDropdown> = (
+    args
+) => <ApplicationNavigationDropdown {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  isOpen: true,
-  heightOffset: APPLICATION_DIMENSION.HEADER_HEIGHT_MOBILE,
+    isOpen: true,
+    heightOffset: DIMENSION.HEADER_HEIGHT_MOBILE,
 };

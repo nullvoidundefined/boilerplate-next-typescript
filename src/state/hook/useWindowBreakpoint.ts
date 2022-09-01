@@ -1,55 +1,57 @@
 import { useEffect, useState } from "react";
 import { useWindowSize } from "react-use";
 
-import { APPLICATION_BREAKPOINT } from "../../constant";
+import { BREAKPOINT } from "../../constant";
 import { ApplicationBreakpoint } from "../../type";
 
 type WindowBreakpointMap = {
-  breakpoint: ApplicationBreakpoint | undefined;
-  isDesktop: boolean;
-  isMobile: boolean;
+    breakpoint: ApplicationBreakpoint | undefined;
+    isDesktop: boolean;
+    isMobile: boolean;
 };
 
 const useWindowBreakpoint = () => {
-  const [value, setValue] = useState<WindowBreakpointMap>({
-    breakpoint: undefined,
-    isDesktop: false,
-    isMobile: false,
-  });
+    const [value, setValue] = useState<WindowBreakpointMap>({
+        breakpoint: undefined,
+        isDesktop: false,
+        isMobile: false,
+    });
 
-  const windowSize = useWindowSize();
+    const windowSize = useWindowSize();
 
-  const getBreakpointFromWindowWidth = (
-    width: number
-  ): ApplicationBreakpoint => {
-    if (width <= APPLICATION_BREAKPOINT.SMALL) {
-      return "small";
-    } else if (width <= APPLICATION_BREAKPOINT.MEDIUM) {
-      return "medium";
-    } else {
-      return "large";
-    }
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const { width } = windowSize;
-      const newWindowBreakpoint = getBreakpointFromWindowWidth(width || 0);
-      if (newWindowBreakpoint !== value.breakpoint) {
-        setValue({
-          breakpoint: newWindowBreakpoint,
-          isDesktop: ["large"].includes(newWindowBreakpoint),
-          isMobile: ["small", "medium"].includes(newWindowBreakpoint),
-        });
-      }
+    const getBreakpointFromWindowWidth = (
+        width: number
+    ): ApplicationBreakpoint => {
+        if (width <= BREAKPOINT.SMALL) {
+            return "small";
+        } else if (width <= BREAKPOINT.MEDIUM) {
+            return "medium";
+        } else {
+            return "large";
+        }
     };
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, [value, windowSize]);
+    useEffect(() => {
+        const handleResize = () => {
+            const { width } = windowSize;
+            const newWindowBreakpoint = getBreakpointFromWindowWidth(
+                width || 0
+            );
+            if (newWindowBreakpoint !== value.breakpoint) {
+                setValue({
+                    breakpoint: newWindowBreakpoint,
+                    isDesktop: ["large"].includes(newWindowBreakpoint),
+                    isMobile: ["small", "medium"].includes(newWindowBreakpoint),
+                });
+            }
+        };
 
-  return value;
+        window.addEventListener("resize", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    }, [value, windowSize]);
+
+    return value;
 };
 
 export { useWindowBreakpoint };

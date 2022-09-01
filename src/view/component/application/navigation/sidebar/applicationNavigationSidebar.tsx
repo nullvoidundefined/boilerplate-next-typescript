@@ -1,20 +1,17 @@
 import styled from "styled-components";
 
-import {
-    APPLICATION_COLOR,
-    APPLICATION_DIMENSION,
-} from "../../../../../constant";
+import { COLOR, DIMENSION } from "../../../../../constant";
 
 interface ApplicationNavigationSidebarProps {
     heightOffset: number;
 }
 
 const StyledApplicationNavigationSidebar = styled.div<ApplicationNavigationSidebarProps>`
-    background-color: ${APPLICATION_COLOR.SIDEBAR_BACKGROUND};
+    background-color: ${COLOR.SIDEBAR_BACKGROUND};
     min-height: ${({ heightOffset }) => {
         return `calc(100vh - ${heightOffset}px)`;
     }};
-    width: ${APPLICATION_DIMENSION.SIDEBAR_WIDTH_DESKTOP}px;
+    width: ${DIMENSION.SIDEBAR_WIDTH_DESKTOP}px;
 `;
 
 const ApplicationNavigationSidebar = ({

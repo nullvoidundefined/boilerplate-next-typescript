@@ -1,9 +1,11 @@
+import { noop } from "lodash";
+
 interface ApplicationLogoProps {
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const ApplicationLogo = ({ onClick }: ApplicationLogoProps) => {
-    return <h1 onClick={onClick}>LOGO</h1>;
+    return <h1 onClick={onClick ? onClick : () => noop()}>LOGO</h1>;
 };
 
 export { ApplicationLogo };

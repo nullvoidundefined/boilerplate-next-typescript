@@ -1,44 +1,41 @@
 import styled from "styled-components";
-import {
-  APPLICATION_COLOR,
-  APPLICATION_DIMENSION,
-} from "../../../../../constant";
+import { COLOR, DIMENSION } from "../../../../../constant";
 
 interface ApplicationNavigationDropdownProps {
-  isOpen: boolean;
-  heightOffset: number;
-  onLinkClick: () => void;
+    isOpen: boolean;
+    heightOffset: number;
+    onLinkClick: () => void;
 }
 
 interface ApplicationNavigationDropdownContentProps {
-  heightOffset: number;
+    heightOffset: number;
 }
 
 const ApplicationNavigationDropdownContainer = styled.div`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  max-width: ${APPLICATION_DIMENSION.MINIMUM_WIDTH}px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: ${DIMENSION.MINIMUM_WIDTH}px;
 `;
 
 const ApplicationNavigationDropdownContent = styled.div<ApplicationNavigationDropdownContentProps>`
-  background-color: ${APPLICATION_COLOR.NAVIGATION_DROPDOWN_BACKGROUND};
-  height: ${({ heightOffset }) => {
-    return `calc(100vh - ${heightOffset}px)`;
-  }};
+    background-color: ${COLOR.NAVIGATION_DROPDOWN_BACKGROUND};
+    height: ${({ heightOffset }) => {
+        return `calc(100vh - ${heightOffset}px)`;
+    }};
 `;
 
 const ApplicationNavigationDropdown = ({
-  isOpen,
-  heightOffset,
+    isOpen,
+    heightOffset,
 }: ApplicationNavigationDropdownProps) => {
-  return isOpen ? (
-    <ApplicationNavigationDropdownContainer>
-      <ApplicationNavigationDropdownContent heightOffset={heightOffset}>
-        Navigation Dropdown
-      </ApplicationNavigationDropdownContent>
-    </ApplicationNavigationDropdownContainer>
-  ) : null;
+    return isOpen ? (
+        <ApplicationNavigationDropdownContainer>
+            <ApplicationNavigationDropdownContent heightOffset={heightOffset}>
+                Navigation Dropdown
+            </ApplicationNavigationDropdownContent>
+        </ApplicationNavigationDropdownContainer>
+    ) : null;
 };
 
 export { ApplicationNavigationDropdown };

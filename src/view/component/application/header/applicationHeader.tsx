@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Button } from "../../../design-system";
-import { APPLICATION_COLOR, APPLICATION_DIMENSION } from "../../../../constant";
+import { COLOR, DIMENSION } from "../../../../constant";
 import { ApplicationLogo } from "../logo/applicationLogo";
 
 // TODO add conditional typechecking to negate the need for the default onDropDownToggleButtonClick prop
@@ -27,12 +27,12 @@ const StyledButtonContainer = styled.div`
 
 const StyledApplicationHeader = styled.header<StyledApplicationHeaderProps>`
     align-items: center;
-    background-color: ${APPLICATION_COLOR.HEADER_BACKGROUND};
+    background-color: ${COLOR.HEADER_BACKGROUND};
     display: flex;
     height: ${({ isMobile }) =>
         isMobile
-            ? `${APPLICATION_DIMENSION.HEADER_HEIGHT_MOBILE}px`
-            : `${APPLICATION_DIMENSION.HEADER_HEIGHT_DESKTOP}px`};
+            ? `${DIMENSION.HEADER_HEIGHT_MOBILE}px`
+            : `${DIMENSION.HEADER_HEIGHT_DESKTOP}px`};
     justify-content: space-between;
     padding: 10px;
 `;
