@@ -3,16 +3,14 @@ export { getAllItemIds } from "./item/getAllItemIds/getAllItemIds";
 export { getAllItems } from "./item/getAllItems/getAllItems";
 export { getItemData } from "./item/getItemData/getItemData";
 // Auth
-export { authSignIn } from "../database/auth/signIn/authSignIn";
-export { authSignOut } from "../database/auth/signOut/authSignOut";
-export { authSignUp } from "../database/auth/signUp/authSignUp";
-//
-export { initializeDatabaseTables } from "../database/initializeTables";
+export { authSignIn } from "./database/actions/auth/authSignIn";
+export { authSignOut } from "./database/actions/auth/authSignOut";
+export { authSignUp } from "./database/actions/auth/authSignUp";
 // Proposal
-export { createProposal } from "./proposal/create/createProposal";
-export { deleteProposal } from "./proposal/delete/deleteProposal";
-export { editProposal } from "./proposal/edit/editProposal";
-export { getProposal } from "./proposal/get/getProposal";
-export { getProposals } from "./proposal/get/getProposals";
+export { createProposal } from "./database/actions/proposal/createProposal";
+export { deleteProposal } from "./database/actions/proposal/deleteProposal";
+export { editProposal } from "./database/actions/proposal/editProposal";
+export { getProposal } from "./database/actions/proposal/getProposal";
+export { getProposalList } from "./database/actions/proposal/getProposalList";
 // Form validation
 export { validateSignInForm } from "./validate/form/signIn/validateSignInForm";

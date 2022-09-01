@@ -18,11 +18,11 @@ const initializeProposalsTableQuery = `CREATE TABLE proposals (
     description TEXT
 );`;
 
-const buildUserAuthQuery = (userName: string, password: string) =>
+const buildAuthSignInQuery = (userName: string, password: string) =>
     `SELECT * FROM users WHERE username = '${userName}' AND password = '${password}';`;
 
 export {
-    buildUserAuthQuery,
+    buildAuthSignInQuery,
     initializeUsersTableQuery,
     initializeDefaultUserQuery,
     initializeProposalsTableQuery,
