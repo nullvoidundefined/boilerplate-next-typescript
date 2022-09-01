@@ -15,7 +15,6 @@ const ApplicationNavigationDropdownContainer = styled.div`
     position: absolute;
     top: 0;
     width: 100%;
-    max-width: ${DIMENSION.MINIMUM_WIDTH}px;
 `;
 
 const ApplicationNavigationDropdownContent = styled.div<ApplicationNavigationDropdownContentProps>`
