@@ -88,7 +88,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
                 dispatch(setHasRequiredApplicationData(true));
             }, 1000);
         }
-    }, []);
+    }, [dispatch, hasRequiredApplicationData]);
 
     return (
         <ErrorBoundary fallback={<ErrorPage />}>
