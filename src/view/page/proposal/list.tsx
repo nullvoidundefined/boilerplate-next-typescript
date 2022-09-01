@@ -6,7 +6,6 @@ type ProposalsPageProps = {
 };
 
 const ProposalListPage = ({ proposals }: ProposalsPageProps) => {
-    console.log("proposals", proposals);
     return (
         <>
             <h2>Proposals</h2>

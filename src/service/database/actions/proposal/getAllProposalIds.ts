@@ -8,8 +8,7 @@ const getAllProposalIds = async () => {
     await client.clean();
 
     if (result.rows) {
-        console.log("rows", result.rows);
-        return ["take-two-tylenol"];
+        return ["take-two-tylenol"]; // TDOD: remove this hardcoded value
     } else {
         return { data: null, success: false };
     }
