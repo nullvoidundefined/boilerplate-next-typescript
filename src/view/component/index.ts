@@ -2,7 +2,7 @@
 export { ApplicationLayout } from "./application/layout/applicationLayout";
 export { ApplicationModal } from "./application/modal/applicationModal";
 // Forms
-export { SignInForm } from "./form/signIn/signInForm";
+export { SignInForm } from "./form/auth/signIn/signInForm";
 // Screens
 export { SplashScreen } from "./screen/splash/splashScreen";
 // Modals

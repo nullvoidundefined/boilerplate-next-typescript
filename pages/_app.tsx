@@ -56,8 +56,8 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
     };
 
     const onSignInFormSubmit = (signUpData: AuthRequestData) => {
-        const { password, email } = signUpData;
-        fetch(`/api/auth/signIn?password=${password}&userName=${email}`)
+        const { password, username } = signUpData;
+        fetch(`/api/auth/signIn?password=${password}&username=${username}`)
             .then((response) => response.json())
             .then((userData) => {
                 hideModal();

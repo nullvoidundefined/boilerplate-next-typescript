@@ -7,3 +7,4 @@ export { getProposalById } from "./database/actions/proposal/getProposalById";
 export { getProposalList } from "./database/actions/proposal/getProposalList";
 // Form validation
 export { validateSignInForm } from "./validate/form/signIn/validateSignInForm";
+export { validateProposalForm } from "./validate/form/proposal/validateProposalForm";

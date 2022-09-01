@@ -5,25 +5,40 @@ import {
     GetStaticPropsResult,
 } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { getProposalById } from "../../src/service";
+import { getProposalById } from "../../../src/service";
 
-import { Proposal } from "../../src/type";
-import { ProposalDetailPage } from "../../src/view/page";
+import { Proposal } from "../../../src/type";
+import { ProposalViewPage } from "../../../src/view/page";
 
 type ProposalRouteType = {
     proposal: Proposal;
 };
 
-export default function ProposalDetailRoute({ proposal }: ProposalRouteType) {
+export default function ProposalViewRoute({ proposal }: ProposalRouteType) {
     const { name } = proposal;
+
+    const router = useRouter();
+
+    const deleteProposal = (id: string) => {
+        console.log(`Delete proposal ${id}`);
+    };
+
+    const navigateToEditProposalPage = (id: string) => {
+        router.push(`/proposals/${id}/edit`);
+    };
 
     return (
         <>
             <Head>
                 <title>{name}</title>
             </Head>
-            <ProposalDetailPage proposal={proposal} />
+            <ProposalViewPage
+                onDeleteClick={deleteProposal}
+                onEditClick={navigateToEditProposalPage}
+                proposal={proposal}
+            />
         </>
     );
 }

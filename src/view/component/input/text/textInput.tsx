@@ -10,7 +10,14 @@ type TextInputProps = {
     placeholder?: string;
 };
 
-const TextInput = ({ id, className = "", disabled = false, onChange, placeholder = "", value }: TextInputProps) => {
+const TextInput = ({
+    className = "",
+    disabled = false,
+    id,
+    onChange,
+    placeholder = "",
+    value,
+}: TextInputProps) => {
     return (
         <input
             className={`form-control ${className}`}

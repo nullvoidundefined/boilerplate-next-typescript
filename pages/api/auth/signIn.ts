@@ -7,13 +7,13 @@ import { authSignIn } from "../../../src/service";
 const signInRoute = async (req: Request, res: Response) => {
     const {
         method,
-        query: { userName, password },
+        query: { username, password },
     } = req;
 
     switch (method) {
         case "GET":
             try {
-                await authSignIn(userName as string, password as string).then(
+                await authSignIn(username as string, password as string).then(
                     (result) => {
                         const { data, success } = result;
                         if (success) {

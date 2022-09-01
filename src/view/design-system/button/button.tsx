@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { MouseEvent, ReactNode } from "react";
 import { Button as BootstrapButton } from "react-bootstrap";
 import styled from "styled-components";
 interface ButtonProps {
     children: ReactNode;
-    onClick: () => void;
+    onClick: (event: MouseEvent) => void;
 }
 
 const StyledButton = styled(BootstrapButton)`

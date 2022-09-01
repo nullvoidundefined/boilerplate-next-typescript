@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { Proposal } from "../../../type";
+import { Button } from "../../design-system";
 
 type ProposalsPageProps = {
+    onDeleteClick: (id: string) => void;
+    onEditClick: (id: string) => void;
     proposals: Proposal[];
 };
 
-const ProposalListPage = ({ proposals }: ProposalsPageProps) => {
+const ProposalListPage = ({ proposals, onEditClick }: ProposalsPageProps) => {
     return (
         <>
             <h2>Proposals</h2>
@@ -17,6 +20,7 @@ const ProposalListPage = ({ proposals }: ProposalsPageProps) => {
                         <Link href={`/proposals/${id}`}>
                             <a>{name}</a>
                         </Link>
+                        <Button onClick={() => onEditClick(id)}>Edit</Button>
                     </li>
                 ))}
             </ul>

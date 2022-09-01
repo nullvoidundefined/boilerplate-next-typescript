@@ -18,8 +18,8 @@ const initializeProposalsTableQuery = `CREATE TABLE proposals (
     description TEXT
 );`;
 
-const buildAuthSignInQuery = (userName: string, password: string) =>
-    `SELECT * FROM users WHERE username = '${userName}' AND password = '${password}';`;
+const buildAuthSignInQuery = (username: string, password: string) =>
+    `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
 
 const buildGetProposalByIdQuery = (id: string) =>
     `SELECT * FROM proposals WHERE id = '${id}';`;
