@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../../design-system";
 import { validateProposalForm } from "../../../../service/validate/form/proposal/validateProposalForm"; // TODO Why does this break Next if using parent export?
-import { TextInputGroup } from "../../input";
+import { TextAreaInputGroup, TextInputGroup } from "../../input";
 
 import type { ProposalFormData, ProposalFormErrorMap } from "../../../../type";
 
@@ -26,7 +26,9 @@ const ProposalForm = ({ formData, onSubmit }: ProposalFormProps) => {
 
     useEffect(() => {
         if (hasErrored) {
+            console.log("formState", formState);
             validateProposalForm(formState, setErrors);
+            setHasErrored(false);
         }
     }, [formState, hasErrored]);
 
@@ -38,6 +40,13 @@ const ProposalForm = ({ formData, onSubmit }: ProposalFormProps) => {
                 label="Name"
                 onChange={updateFormState}
                 value={formState.name}
+            />
+            <TextAreaInputGroup
+                error={errors.description}
+                formDataKey="description"
+                label="Description"
+                onChange={updateFormState}
+                value={formState.description}
             />
 
             <div className="d-flex flex-row-reverse w-100">

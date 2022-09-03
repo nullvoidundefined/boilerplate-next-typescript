@@ -1,6 +1,7 @@
 export type { ApplicationBreakpoint } from "./application";
 export type { AuthRequestData } from "./auth";
 export type { SignInFormErrorMap } from "./form";
+export type { RequestResult } from "./http";
 export type { Item } from "./item";
 export type { Person } from "./person";
 export type {

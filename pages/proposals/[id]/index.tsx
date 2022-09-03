@@ -7,7 +7,7 @@ import {
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { getProposalById } from "../../../src/service";
+import { getProposal } from "../../../src/service";
 
 import { Proposal } from "../../../src/type";
 import { ProposalViewPage } from "../../../src/view/page";
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({
     GetStaticPropsResult<ProposalRouteType>
 > => {
     const id = params?.id || ""; // There will always be an id due to routing
-    const result = await getProposalById(id as string);
+    const result = await getProposal(id as string);
     const { data } = result;
     const proposal = data ? data : [];
     return {

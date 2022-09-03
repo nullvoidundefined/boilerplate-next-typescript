@@ -20,7 +20,7 @@ import {
     useWindowBreakpoint,
     wrapper,
 } from "../src/state";
-import { AuthRequestData, User } from "../src/type";
+import { AuthRequestData } from "../src/type";
 import {
     ApplicationLayout,
     ApplicationModal,
@@ -28,6 +28,7 @@ import {
     SignInModal,
 } from "../src/view/component";
 import { ErrorPage } from "../src/view/page";
+import { getSignInUrl } from "../src/constant";
 
 const App = ({ Component: Route, pageProps }: AppProps) => {
     const user = useSelector(selectUser);
@@ -57,11 +58,11 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
 
     const onSignInFormSubmit = (signUpData: AuthRequestData) => {
         const { password, username } = signUpData;
-        fetch(`/api/auth/signIn?password=${password}&username=${username}`)
+        fetch(getSignInUrl(password, username))
             .then((response) => response.json())
             .then((userData) => {
                 hideModal();
-                updateUser(userData);
+                dispatch(setUser(userData));
                 router.push("/proposals");
             })
             .catch((error) => console.log(error));
@@ -72,10 +73,6 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
 
     const showModal = (modalContent: ReactNode) => {
         modalRef.current.showModal(modalContent);
-    };
-
-    const updateUser = (user: User) => {
-        dispatch(setUser(user));
     };
 
     const hasRequiredApplicationData = useSelector(

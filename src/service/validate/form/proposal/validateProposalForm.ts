@@ -7,7 +7,7 @@ const validateProposalForm = (
     const newErrors: ProposalFormErrorMap = {} as ProposalFormErrorMap;
 
     if (formData.name.length < 1) {
-        newErrors.name = "Please enter an email";
+        newErrors.name = "Please enter a name";
     }
 
     setErrors(newErrors);

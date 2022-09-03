@@ -1,11 +1,9 @@
-import { getDatabaseClient } from "../../utility/getClient";
-import { buildAuthSignInQuery } from "../../../../constant/query";
+import { getDatabaseClient } from "../../database/getClient/getClient";
+
+import { signInQuery } from "../../../service";
 
 const authSignIn = async (username: string, password: string) => {
-    const authSignInQuery = buildAuthSignInQuery(
-        username as string,
-        password as string
-    );
+    const authSignInQuery = signInQuery(username as string, password as string);
 
     const client = getDatabaseClient();
     await client.connect();

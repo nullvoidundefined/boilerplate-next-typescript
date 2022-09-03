@@ -1,5 +1,6 @@
-import { getDatabaseClient } from "../../utility/getClient";
-import { getProposalListQuery } from "../../../../constant";
+import { getDatabaseClient } from "../../database/getClient/getClient";
+
+import { getProposalListQuery } from "../../../service";
 
 const getProposalList = async () => {
     const client = getDatabaseClient();

@@ -1,3 +1,5 @@
+import { Proposal } from "../../../type";
+
 const initializeUsersTableQuery = `CREATE TABLE users (
     created TIMESTAMP NOT NULL,
     email VARCHAR ( 255 ) UNIQUE NOT NULL,
@@ -18,10 +20,19 @@ const initializeProposalsTableQuery = `CREATE TABLE proposals (
     description TEXT
 );`;
 
-const buildAuthSignInQuery = (username: string, password: string) =>
+const signInQuery = (username: string, password: string) =>
     `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
 
-const buildGetProposalByIdQuery = (id: string) =>
+const editProposalQuery = (proposal: Proposal) =>
+    `
+        UPDATE proposals 
+        SET name = '${proposal.name}', 
+            description = '${proposal.description}', 
+            id_public = '${proposal.name}' 
+        WHERE id = '${proposal.id}';
+    `;
+
+const getProposalQuery = (id: string) =>
     `SELECT * FROM proposals WHERE id = '${id}';`;
 
 const getProposalListQuery = `SELECT * FROM proposals;`;
@@ -29,8 +40,9 @@ const getProposalListQuery = `SELECT * FROM proposals;`;
 const getProposalListPublicIdsQuery = `SELECT id_public FROM proposals;`;
 
 export {
-    buildAuthSignInQuery,
-    buildGetProposalByIdQuery,
+    signInQuery,
+    getProposalQuery,
+    editProposalQuery,
     getProposalListPublicIdsQuery,
     getProposalListQuery,
     initializeUsersTableQuery,

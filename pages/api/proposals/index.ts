@@ -2,19 +2,18 @@ import type {
     NextApiRequest as Request,
     NextApiResponse as Response,
 } from "next";
-import { authSignIn } from "../../../src/service";
-import { RequestResult } from "../../../src/type/http";
 
-const signInRoute = async (req: Request, res: Response) => {
-    const {
-        method,
-        query: { username, password },
-    } = req;
+import { getProposal } from "../../../src/service";
+import { RequestResult } from "../../../src/type";
+
+const proposalsEditRoute = async (req: Request, res: Response) => {
+    const { method, query } = req;
+    const { id } = query;
 
     switch (method) {
         case "GET":
             try {
-                await authSignIn(username as string, password as string).then(
+                await getProposal(id as string).then(
                     (result: RequestResult) => {
                         const { data, success } = result;
                         if (success) {
@@ -34,4 +33,4 @@ const signInRoute = async (req: Request, res: Response) => {
     }
 };
 
-export default signInRoute;
+export default proposalsEditRoute;
