@@ -6,12 +6,12 @@ import React from "react";
 import { SignInForm } from "./signInForm";
 
 export default {
-  title: "Component/Form/SignIn",
-  component: SignInForm,
+    title: "Component/Form/SignIn",
+    component: SignInForm,
 } as ComponentMeta<typeof SignInForm>;
 
 const Template: ComponentStory<typeof SignInForm> = () => (
-  <SignInForm onSubmit={() => noop()} />
+    <SignInForm onSubmit={() => noop()} />
 );
 
 export const Default = Template.bind({});

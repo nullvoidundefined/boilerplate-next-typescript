@@ -1,5 +1,4 @@
 export const DIMENSION = {
-    BREAKPOINT: 996,
     MINIMUM_WIDTH: 420,
 
     FOOTER_HEIGHT: 120,

@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import { ProposalCreatePage } from "../../src/view/page";
 
 export default function CreateProposalRoute() {
