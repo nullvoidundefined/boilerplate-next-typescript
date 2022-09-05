@@ -1,12 +1,10 @@
-import { getDatabaseClient } from "../../database/getClient/getClient";
+import { queryDatabaseClient } from "../../database/client/queryDatabaseClient";
 
-import { getProposalListQuery } from "../../../service";
-
-const getProposalList = async () => {
-    const client = getDatabaseClient();
-    await client.connect();
-    const result = await client.query(getProposalListQuery);
-    await client.clean();
+const getProposalListViaDatabase = async () => {
+    const query = `SELECT * FROM proposals;`;
+    // IAN TODO: Fix this
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await queryDatabaseClient(query);
     if (result.rows) {
         return { data: result.rows, success: true };
     } else {
@@ -14,4 +12,4 @@ const getProposalList = async () => {
     }
 };
 
-export { getProposalList };
+export { getProposalListViaDatabase };

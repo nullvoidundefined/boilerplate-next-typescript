@@ -1,13 +1,11 @@
-import { getDatabaseClient } from "../../database/getClient/getClient";
-
-import { signInQuery } from "../../../service";
+import { getDatabaseClient } from "../../database/client/getDatabaseClient";
 
 const authSignIn = async (username: string, password: string) => {
-    const authSignInQuery = signInQuery(username as string, password as string);
+    const query = authSignInQuery(username as string, password as string);
 
     const client = getDatabaseClient();
     await client.connect();
-    const result = await client.query(authSignInQuery);
+    const result = await client.query(query);
     await client.clean();
     if (result.rows.length > 0) {
         return { data: result.rows[0], success: true };
@@ -16,4 +14,10 @@ const authSignIn = async (username: string, password: string) => {
     }
 };
 
-export { authSignIn };
+const authSignInQuery = (username: string, password: string) =>
+    `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
+
+const getAuthSignInUrl = (password: string, username: string) =>
+    `/api/auth/signIn?password=${password}&username=${username}`;
+
+export { authSignIn, getAuthSignInUrl };

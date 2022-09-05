@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { ReactNode, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { getAuthSignInUrl } from "../src/service";
 import {
     ApplicationModalContext,
     setHasRequiredApplicationData,
@@ -28,7 +29,6 @@ import {
     SignInModal,
 } from "../src/view/component";
 import { ErrorPage } from "../src/view/page";
-import { getSignInUrl } from "../src/constant";
 
 const App = ({ Component: Route, pageProps }: AppProps) => {
     const user = useSelector(selectUser);
@@ -58,7 +58,7 @@ const App = ({ Component: Route, pageProps }: AppProps) => {
 
     const onSignInFormSubmit = (signUpData: AuthRequestData) => {
         const { password, username } = signUpData;
-        fetch(getSignInUrl(password, username))
+        fetch(getAuthSignInUrl(password, username))
             .then((response) => response.json())
             .then((userData) => {
                 hideModal();

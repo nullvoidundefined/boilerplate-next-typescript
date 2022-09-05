@@ -1,13 +1,16 @@
-import { getDatabaseClient } from "../../database/getClient/getClient";
+import { queryDatabaseClient } from "../../database/client/queryDatabaseClient";
 
-import { getProposalQuery } from "../../../service";
+const getProposalViaServer = (id: string) => {
+    const url = `/api/proposals?id=${id}`;
+    return fetch(url).then((response) => response.json());
+};
 
-const getProposal = async (id: string) => {
-    const client = getDatabaseClient();
-    await client.connect();
-    const query = getProposalQuery(id);
-    const result = await client.query(query);
-    await client.clean();
+const getProposalViaDatabase = async (id: string) => {
+    const query = `SELECT * FROM proposals WHERE id = '${id}';`;
+
+    // IAN TODO: Fix this
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await queryDatabaseClient(query);
     if (result.rows.length > 0) {
         return { data: result.rows[0], success: true };
     } else {
@@ -15,4 +18,4 @@ const getProposal = async (id: string) => {
     }
 };
 
-export { getProposal };
+export { getProposalViaServer, getProposalViaDatabase };

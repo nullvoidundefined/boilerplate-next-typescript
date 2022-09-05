@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../../../design-system";
 
-import { validateSignInForm } from "../../../../../service/validate/form/signIn/validateSignInForm"; // TODO Why does this break Next if using parent export?
+import { validateSignInForm } from "../../../../../service";
 import { AuthRequestData, SignInFormErrorMap } from "../../../../../type";
 import { TextInputGroup } from "../../../input";
 

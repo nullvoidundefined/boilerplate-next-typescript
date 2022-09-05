@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 
 import { Proposal } from "../../src/type";
-import { getProposalList } from "../../src/service";
+import { getProposalListViaDatabase } from "../../src/service";
 import { ProposalListPage } from "../../src/view/page";
 import { useRouter } from "next/router";
 
@@ -38,7 +38,7 @@ export default function ProposalsRoute({ proposals }: ProposalsRouteProps) {
 // SSR
 
 export const getStaticProps: GetStaticProps = async () => {
-    const result = await getProposalList();
+    const result = await getProposalListViaDatabase();
     const { data } = result;
     const proposals = data ? data : [];
     return {

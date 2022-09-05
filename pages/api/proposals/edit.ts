@@ -3,7 +3,7 @@ import type {
     NextApiResponse as Response,
 } from "next";
 
-import { editProposal } from "../../../src/service";
+import { editProposalViaDatabase } from "../../../src/service";
 import { Proposal, RequestResult } from "../../../src/type";
 
 const proposalsEditRoute = async (req: Request, res: Response) => {
@@ -14,14 +14,16 @@ const proposalsEditRoute = async (req: Request, res: Response) => {
         case "POST":
             console.log("POST /api/proposals/edit", proposal);
             try {
-                await editProposal(proposal).then((result: RequestResult) => {
-                    const { data, success } = result;
-                    if (success) {
-                        res.status(200).json(data);
-                    } else {
-                        res.status(401).json("Unauthorized");
+                await editProposalViaDatabase(proposal).then(
+                    (result: RequestResult) => {
+                        const { data, success } = result;
+                        if (success) {
+                            res.status(200).json(data);
+                        } else {
+                            res.status(401).json("Unauthorized");
+                        }
                     }
-                });
+                );
             } catch (error) {
                 res.status(500).json(error);
             }

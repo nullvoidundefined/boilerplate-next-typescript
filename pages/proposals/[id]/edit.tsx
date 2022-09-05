@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getProposalUrl } from "../../../src/service/http/url/http";
+import { getProposalViaServer } from "../../../src/service";
 import { Proposal } from "../../../src/type";
 import { ProposalEditPage } from "../../../src/view/page";
 
@@ -14,14 +14,11 @@ export default function EditProposalRoute() {
 
     useEffect(() => {
         if (id && !proposal) {
-            const url = getProposalUrl(id);
-            fetch(url)
-                .then((response) => response.json())
-                .then((requestedProposal: Proposal) => {
-                    setProposal(requestedProposal);
+            getProposalViaServer(id)
+                .then((result: Proposal) => {
+                    setProposal(result);
                 })
-                .catch((error) => console.log(error));
-            setProposal(proposal);
+                .catch((error: string) => console.log(error));
         }
     }, [id, proposal]);
 

@@ -3,7 +3,7 @@ import type {
     NextApiResponse as Response,
 } from "next";
 
-import { getProposal } from "../../../src/service";
+import { getProposalViaDatabase } from "../../../src/service";
 import { RequestResult } from "../../../src/type";
 
 const proposalsEditRoute = async (req: Request, res: Response) => {
@@ -13,7 +13,7 @@ const proposalsEditRoute = async (req: Request, res: Response) => {
     switch (method) {
         case "GET":
             try {
-                await getProposal(id as string).then(
+                await getProposalViaDatabase(id as string).then(
                     (result: RequestResult) => {
                         const { data, success } = result;
                         if (success) {

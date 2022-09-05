@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { getEditProposalUrl } from "../../../service/http/url/http";
+import { editProposalViaServer } from "../../../service";
 import { Proposal, ProposalFormData } from "../../../type";
 import { ProposalForm } from "../../component";
 
@@ -12,11 +12,7 @@ const ProposalEditPage = ({ proposal }: ProposalEditPageProps) => {
 
     const editProposal = (proposalFormData: ProposalFormData) => {
         const newProposal = { ...proposal, ...proposalFormData };
-        fetch(getEditProposalUrl(), {
-            body: JSON.stringify(newProposal),
-            method: "POST",
-        })
-            .then((response) => response.json())
+        editProposalViaServer(newProposal)
             .then(() => {
                 router.push(`/proposals`);
             })
